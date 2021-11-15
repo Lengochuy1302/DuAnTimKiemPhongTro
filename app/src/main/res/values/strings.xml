@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">DuAnAETH</string>
+    <string name="app_name">AETH HOUSE</string>
+
+    //Link dẫn Firebase
+    //firebase
+    <string name="link_RealTime_Database">https://aethhouse-default-rtdb.asia-southeast1.firebasedatabase.app/</string>
+    <string name="link_Storage">gs://huyassignment.appspot.com/</string>
 </resources>

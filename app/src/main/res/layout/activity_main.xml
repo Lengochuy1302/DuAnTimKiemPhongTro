@@ -142,7 +142,7 @@
             android:text="Quên mật khẩu? "/>
 
         <TextView
-            android:id="@+id/txt_Huy"
+            android:id="@+id/btndangnhap"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/maubuton"

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "31763961035",
+    "project_id": "aethhouse",
+    "storage_bucket": "aethhouse.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:31763961035:android:681f6a68f3e1563a34774e",
+        "android_client_info": {
+          "package_name": "com.example.duanaeth"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "31763961035-d72aorv652rjjsgsllk8sodqj3ib2slr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAazVkdRgH3-tfKKtfzVhMZ2ZgrbBT2DPk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "31763961035-d72aorv652rjjsgsllk8sodqj3ib2slr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
