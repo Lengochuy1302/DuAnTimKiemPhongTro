@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         anhxa();
         //ẩn toolBar
         getSupportActionBar().hide();
-
+            // thành ml
 
         //Chức năng đăng nhập
         btnDangNhap.setOnClickListener(new View.OnClickListener() {
