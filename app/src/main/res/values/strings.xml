@@ -4,5 +4,5 @@
     //Link dẫn Firebase
     //firebase
     <string name="link_RealTime_Database">https://aethhouse-default-rtdb.asia-southeast1.firebasedatabase.app/</string>
-    <string name="link_Storage">gs://huyassignment.appspot.com/</string>
+    <string name="link_Storage">gs://aethhouse.appspot.com</string>
 </resources>
