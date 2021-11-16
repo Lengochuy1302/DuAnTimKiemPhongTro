@@ -30,7 +30,6 @@ public class IntroActivity extends AppCompatActivity {
         TextView text1 = findViewById(R.id.text1);
         TextView text3 = findViewById(R.id.text3);
         TextView text2 = findViewById(R.id.text2);
-
         setTextViewColor(text1,
                 getResources().getColor(R.color.greentext),
                 getResources().getColor(R.color.bluetext));
