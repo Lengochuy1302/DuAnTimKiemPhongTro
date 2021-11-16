@@ -86,7 +86,6 @@ public class MainActivity extends AppCompatActivity {
                 dangKi();
             }
         });
-
     }
 
     //hàm đăng ký
