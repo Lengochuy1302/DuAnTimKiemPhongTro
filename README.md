@@ -4,9 +4,10 @@ Dự án tìm kiếm phòng trọ cho Android giúp người nhìn dễ dàng t�
 
 ## ScreenShot
 <p align="center">
-  <img src="https://firebasestorage.googleapis.com/v0/b/lengochuyasm.appspot.com/o/link%2FIMG_20211115_160107.png?alt=media&token=8bb74436-2e00-44ab-84c9-4cbbe0deaa6f" width="350" alt="accessibility text">
-<p align="center">Giao diện đăng nhập</p>
+  <img src="https://firebasestorage.googleapis.com/v0/b/lengochuyasm.appspot.com/o/link%2FIMG_20211115_160107.png?alt=media&token=8bb74436-2e00-44ab-84c9-4cbbe0deaa6f" width="170" alt="accessibility text">
+  <img src="https://firebasestorage.googleapis.com/v0/b/lengochuyasm.appspot.com/o/link%2FIMG_20211116_071635%5B1%5D.png?alt=media&token=80b842fc-5faa-4e53-8992-8b1bdf164859" width="170" alt="accessibility text">
 </p>
+
 
 ## Setup
 Phần mềm được thiết kế bởi Android Studio
