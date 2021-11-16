@@ -195,11 +195,17 @@
                 android:layout_marginEnd="40dp"
                 android:background="@drawable/emailpng"/>
 
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginEnd="40dp"
-                android:background="@drawable/facebook"/>
+
+                <ImageView
+                    android:id="@+id/btnLoginFacebook"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginEnd="40dp"
+                    android:background="@drawable/facebook"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
                 android:layout_width="50dp"
@@ -369,6 +375,7 @@
                 android:background="@drawable/backpng"/>
 
             <ImageView
+                android:id="@+id/btnLoginFacebook1"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginEnd="40dp"
