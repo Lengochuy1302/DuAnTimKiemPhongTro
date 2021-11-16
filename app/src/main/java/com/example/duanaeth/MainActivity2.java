@@ -14,6 +14,6 @@ public class MainActivity2 extends AppCompatActivity {
 
 
     // Đã thêm các ảnh icon của app
-    // Vẫn đang bổ sung thêm nha
+    // Vẫn đang bổ sung thêm nha mn
 
 }
