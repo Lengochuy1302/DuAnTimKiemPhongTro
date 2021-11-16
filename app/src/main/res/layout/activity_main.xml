@@ -38,7 +38,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/logoapp"
         android:layout_width="400dp"
         android:layout_height="350dp"
         android:layout_marginTop="-80dp"
