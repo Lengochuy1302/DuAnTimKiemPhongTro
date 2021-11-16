@@ -5,4 +5,9 @@
     //firebase
     <string name="link_RealTime_Database">https://aethhouse-default-rtdb.asia-southeast1.firebasedatabase.app/</string>
     <string name="link_Storage">gs://aethhouse.appspot.com</string>
+    //facebookid
+    <string name="facebook_app_id">2277195479253822</string>
+    <string name="fb_login_protocol_scheme">fb2277195479253822</string>
+
+
 </resources>

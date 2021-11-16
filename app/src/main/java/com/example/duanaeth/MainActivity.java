@@ -1,6 +1,7 @@
 package com.example.duanaeth;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
@@ -9,6 +10,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.Settings;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,28 +19,40 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.facebook.AccessToken;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.login.LoginManager;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.Arrays;
 import java.util.regex.Pattern;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class MainActivity extends AppCompatActivity {
     TextView btnDangNhap, btnDangKy;
-    ImageView btnEmailDK, btnQuayLai;
+    ImageView btnEmailDK, btnQuayLai, btnFacebook, btnFacebook1;
     EditText edtEmailDN, edtEmailDK, edtMatKhauDN, edtMatKhauDK, edtMatKhauDKLai;
     LinearLayout linearLayoutDangKy, linearLayoutDangNhap;
+    LoginButton loginButton;
 
     //Firebase
     public String linkRealTime;
     private DatabaseReference reference;
     private FirebaseAuth mAuth;
+    private CallbackManager fbCallbackManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,7 +101,84 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //LoginFacebook
+        setUpLoginFacebook();
+
     }
+
+
+    //hàm login facebook
+    private void setUpLoginFacebook() {
+        btnFacebook.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SweetAlertDialog pDialog = new SweetAlertDialog(MainActivity.this, SweetAlertDialog.PROGRESS_TYPE);
+                pDialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
+                pDialog.setTitleText("Loading ...");
+                pDialog.setCancelable(true);
+                pDialog.show();
+                    fbCallbackManager = CallbackManager.Factory.create();
+                    LoginManager.getInstance().logInWithReadPermissions(MainActivity.this,
+                            Arrays.asList("email", "public_profile"));
+                    LoginManager.getInstance().registerCallback(fbCallbackManager, new FacebookCallback<LoginResult>() {
+                        @Override
+                        public void onSuccess(LoginResult loginResult) {
+                            pDialog.dismiss();
+                            Toast.makeText(MainActivity.this, "Dang nhap thanh cong", Toast.LENGTH_SHORT).show();
+                            handleFacebookAccessToken(loginResult.getAccessToken());
+                            Intent introIntent = new Intent(MainActivity.this, MainActivity2.class);
+                            startActivity(introIntent);
+                            finishAffinity();
+                        }
+
+                        @Override
+                        public void onCancel() {
+                            pDialog.dismiss();
+                            Toast.makeText(MainActivity.this, "Dang nhap cancel", Toast.LENGTH_SHORT).show();
+                        }
+
+                        @Override
+                        public void onError(FacebookException error) {
+                            pDialog.dismiss();
+                            Toast.makeText(MainActivity.this, "Dang nhap err", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+            }
+        });
+
+    }
+
+    private void handleFacebookAccessToken(AccessToken token) {
+        Log.d("AAAU", "handleFacebookAccessToken:" + token);
+
+        AuthCredential credential = FacebookAuthProvider.getCredential(token.getToken());
+        mAuth.signInWithCredential(credential)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+                            Log.d("AAAU", "signInWithCredential:success");
+                            FirebaseUser user = mAuth.getCurrentUser();
+
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Log.w("AAAU", "signInWithCredential:failure", task.getException());
+                            Toast.makeText(MainActivity.this, "Authentication failed.",
+                                    Toast.LENGTH_SHORT).show();
+
+                        }
+                    }
+                });
+    }
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        // Pass the activity result back to the Facebook SDK
+        fbCallbackManager.onActivityResult(requestCode, resultCode, data);
+    }
+
 
     //hàm đăng ký
     private void dangKi() {
@@ -267,5 +358,7 @@ public class MainActivity extends AppCompatActivity {
         edtMatKhauDKLai = findViewById(R.id.matKhauDKLai);
         edtEmailDN = findViewById(R.id.emailDN);
         edtMatKhauDN = findViewById(R.id.matkhauDN);
+        btnFacebook = findViewById(R.id.btnLoginFacebook);
+//        btnFacebook1 = findViewById(R.id.btnLoginFacebook1);
     }
 }
