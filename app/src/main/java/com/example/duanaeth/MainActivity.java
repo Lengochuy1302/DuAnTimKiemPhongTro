@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         anhxa();
         //ẩn toolBar
         getSupportActionBar().hide();
-
+        
 
         //Chức năng đăng nhập
         btnDangNhap.setOnClickListener(new View.OnClickListener() {
@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 SweetAlertDialog pDialog = new SweetAlertDialog(MainActivity.this, SweetAlertDialog.PROGRESS_TYPE);
                 pDialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
-                pDialog.setTitleText("Loading .....");
+                pDialog.setTitleText("Loading ...");
                 pDialog.setCancelable(true);
                 pDialog.show();
             }
