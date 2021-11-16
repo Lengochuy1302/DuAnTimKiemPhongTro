@@ -2,9 +2,11 @@ package com.example.duanaeth;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.Manifest;
 import android.content.Intent;
 import android.graphics.LinearGradient;
 import android.graphics.Shader;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.TextPaint;
 import android.view.View;
@@ -12,6 +14,13 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.gun0912.tedpermission.PermissionListener;
+import com.gun0912.tedpermission.TedPermission;
+
+import java.util.List;
 
 public class IntroActivity extends AppCompatActivity {
 
@@ -103,6 +112,41 @@ public class IntroActivity extends AppCompatActivity {
         textView.getPaint().setShader(shader);
         textView.setTextColor(color[0]);
 
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        clickrequest();
+
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        if (currentUser == null) {
+            return;
+        } else {
+            startActivity(new Intent(IntroActivity.this, MainActivity2.class));
+        }
+    }
+
+    private void clickrequest() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M){
+            return;
+        }
+        PermissionListener permissionListener = new PermissionListener() {
+            @Override
+            public void onPermissionGranted() {
+
+            }
+
+            @Override
+            public void onPermissionDenied(List<String> deniedPermissions) {
+
+            }
+        };
+        TedPermission.with(IntroActivity.this)
+                .setPermissionListener(permissionListener)
+                .setDeniedMessage("Nếu bạn không cho phép thì một số chức năng như 'Nhập văn bản bằng giọng nói', 'Upload avatar' không thể sử dụng được!\n \nNếu bạn muốn bật lại nó thì hãy vào phần [Setting] > [Quyền truy cập] > [Bật các quyền truy cập]")
+                .setPermissions(Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.RECORD_AUDIO)
+                .check();
     }
 
 }
