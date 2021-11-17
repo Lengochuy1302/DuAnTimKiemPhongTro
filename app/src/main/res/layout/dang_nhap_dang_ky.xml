@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:background="#81E4E4E4"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".DangNhapDangKy">
 
     // Hình tròn nền
 

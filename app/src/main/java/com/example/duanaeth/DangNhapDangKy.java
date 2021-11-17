@@ -1,10 +1,8 @@
 package com.example.duanaeth;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -14,7 +12,6 @@ import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -49,7 +46,7 @@ import java.util.regex.Pattern;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
-public class MainActivity extends AppCompatActivity {
+public class DangNhapDangKy extends AppCompatActivity {
     private static final int RC_SIGN_IN = 123;
     TextView btnDangNhap, btnDangKy;
     ImageView btnEmailDK, btnQuayLai, btnFacebook, btnFacebook1, btnGoogle;
@@ -69,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.dang_nhap_dang_ky);
         //ánh xạ
         anhxa();
 
@@ -147,21 +144,21 @@ public class MainActivity extends AppCompatActivity {
         btnFacebook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SweetAlertDialog pDialog = new SweetAlertDialog(MainActivity.this, SweetAlertDialog.PROGRESS_TYPE);
+                SweetAlertDialog pDialog = new SweetAlertDialog(DangNhapDangKy.this, SweetAlertDialog.PROGRESS_TYPE);
                 pDialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
                 pDialog.setTitleText("Loading ...");
                 pDialog.setCancelable(true);
                 pDialog.show();
                     fbCallbackManager = CallbackManager.Factory.create();
-                    LoginManager.getInstance().logInWithReadPermissions(MainActivity.this,
+                    LoginManager.getInstance().logInWithReadPermissions(DangNhapDangKy.this,
                             Arrays.asList("email", "public_profile"));
                     LoginManager.getInstance().registerCallback(fbCallbackManager, new FacebookCallback<LoginResult>() {
                         @Override
                         public void onSuccess(LoginResult loginResult) {
                             pDialog.dismiss();
-                            Toast.makeText(MainActivity.this, "Dang nhap thanh cong", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(DangNhapDangKy.this, "Dang nhap thanh cong", Toast.LENGTH_SHORT).show();
                             handleFacebookAccessToken(loginResult.getAccessToken());
-                            Intent introIntent = new Intent(MainActivity.this, MainActivity2.class);
+                            Intent introIntent = new Intent(DangNhapDangKy.this, UpdateProfile.class);
                             startActivity(introIntent);
                             finishAffinity();
                         }
@@ -169,13 +166,13 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void onCancel() {
                             pDialog.dismiss();
-                            Toast.makeText(MainActivity.this, "Dang nhap cancel", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(DangNhapDangKy.this, "Dang nhap cancel", Toast.LENGTH_SHORT).show();
                         }
 
                         @Override
                         public void onError(FacebookException error) {
                             pDialog.dismiss();
-                            Toast.makeText(MainActivity.this, "Dang nhap err", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(DangNhapDangKy.this, "Dang nhap err", Toast.LENGTH_SHORT).show();
                         }
                     });
             }
@@ -199,7 +196,7 @@ public class MainActivity extends AppCompatActivity {
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w("AAAU", "signInWithCredential:failure", task.getException());
-                            Toast.makeText(MainActivity.this, "Authentication failed.",
+                            Toast.makeText(DangNhapDangKy.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
 
                         }
@@ -235,12 +232,12 @@ public class MainActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             FirebaseUser user = mAuth.getCurrentUser();
-                            Intent intent = new Intent(getApplicationContext(),MainActivity2.class);
+                            Intent intent = new Intent(getApplicationContext(), UpdateProfile.class);
                             startActivity(intent);
 
 
                         } else {
-                            Toast.makeText(MainActivity.this, "Sorry auth failed.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(DangNhapDangKy.this, "Sorry auth failed.", Toast.LENGTH_SHORT).show();
 
 
                         }
@@ -262,11 +259,11 @@ public class MainActivity extends AppCompatActivity {
             try {
                 // Google Sign In was successful, authenticate with Firebase
                 GoogleSignInAccount account = task.getResult(ApiException.class);
-                Toast.makeText(MainActivity.this, "ok", Toast.LENGTH_SHORT).show();
+                Toast.makeText(DangNhapDangKy.this, "ok", Toast.LENGTH_SHORT).show();
                 firebaseAuthWithGoogle(account);
             } catch (ApiException e) {
                 // Google Sign In failed, update UI appropriately
-                Toast.makeText(MainActivity.this, "Sorry auth failed.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(DangNhapDangKy.this, "Sorry auth failed.", Toast.LENGTH_SHORT).show();
             }
         } else {
             fbCallbackManager.onActivityResult(requestCode, resultCode, data);
@@ -310,7 +307,7 @@ public class MainActivity extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
                                     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                                    SweetAlertDialog pDialog = new SweetAlertDialog(MainActivity.this, SweetAlertDialog.PROGRESS_TYPE);
+                                    SweetAlertDialog pDialog = new SweetAlertDialog(DangNhapDangKy.this, SweetAlertDialog.PROGRESS_TYPE);
                                     pDialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
                                     pDialog.setTitleText("Loading ...");
                                     pDialog.setCancelable(true);
@@ -328,7 +325,7 @@ public class MainActivity extends AppCompatActivity {
                                                 device.setTenDevice(iddevice);
                                                 reference = FirebaseDatabase.getInstance(linkRealTime).getReference("users").child(user.getUid()).child("DeviceID");
                                                 reference.child("ThietBi").setValue(device);
-                                                Intent introIntent = new Intent(MainActivity.this, MainActivity2.class);
+                                                Intent introIntent = new Intent(DangNhapDangKy.this, UpdateProfile.class);
                                                 startActivity(introIntent);
                                                 finishAffinity();
                                             } else {
@@ -338,7 +335,7 @@ public class MainActivity extends AppCompatActivity {
                                                 device.setTenDevice(iddevice);
                                                 reference = FirebaseDatabase.getInstance(linkRealTime).getReference("users").child(user.getUid()).child("DeviceID");
                                                 reference.child("ThietBi").setValue(device);
-                                                startActivity(new Intent(MainActivity.this, MainActivity2.class));
+                                                startActivity(new Intent(DangNhapDangKy.this, UpdateProfile.class));
                                                 finishAffinity();
                                             }
 
@@ -348,7 +345,7 @@ public class MainActivity extends AppCompatActivity {
 
                                 } else {
                                     btnDangKy.setEnabled(true);
-                                    new SweetAlertDialog(MainActivity.this, SweetAlertDialog.ERROR_TYPE)
+                                    new SweetAlertDialog(DangNhapDangKy.this, SweetAlertDialog.ERROR_TYPE)
                                             .setTitleText("Oops...")
                                             .setContentText("Tài khoản đã tồn tại!")
                                             .show();
@@ -389,7 +386,7 @@ public class MainActivity extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
                                     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                                    SweetAlertDialog pDialog = new SweetAlertDialog(MainActivity.this, SweetAlertDialog.PROGRESS_TYPE);
+                                    SweetAlertDialog pDialog = new SweetAlertDialog(DangNhapDangKy.this, SweetAlertDialog.PROGRESS_TYPE);
                                     pDialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
                                     pDialog.setTitleText("Loading ...");
                                     pDialog.setCancelable(true);
@@ -407,7 +404,7 @@ public class MainActivity extends AppCompatActivity {
                                                 device.setTenDevice(iddevice);
                                                 reference = FirebaseDatabase.getInstance(linkRealTime).getReference("users").child(user.getUid()).child("DeviceID");
                                                 reference.child("ThietBi").setValue(device);
-                                                Intent introIntent = new Intent(MainActivity.this, MainActivity2.class);
+                                                Intent introIntent = new Intent(DangNhapDangKy.this, UpdateProfile.class);
                                                 startActivity(introIntent);
                                                 finishAffinity();
                                             } else {
@@ -417,7 +414,7 @@ public class MainActivity extends AppCompatActivity {
                                                 device.setTenDevice(iddevice);
                                                 reference = FirebaseDatabase.getInstance(linkRealTime).getReference("users").child(user.getUid()).child("DeviceID");
                                                 reference.child("ThietBi").setValue(device);
-                                                startActivity(new Intent(MainActivity.this, MainActivity2.class));
+                                                startActivity(new Intent(DangNhapDangKy.this, UpdateProfile.class));
                                                 finishAffinity();
                                             }
                                         }
@@ -425,7 +422,7 @@ public class MainActivity extends AppCompatActivity {
 
                                 } else {
                                     btnDangNhap.setEnabled(true);
-                                    new SweetAlertDialog(MainActivity.this, SweetAlertDialog.ERROR_TYPE)
+                                    new SweetAlertDialog(DangNhapDangKy.this, SweetAlertDialog.ERROR_TYPE)
                                             .setTitleText("Oops...")
                                             .setContentText("Sai tài khoản hoặc mật khẩu!")
                                             .show();

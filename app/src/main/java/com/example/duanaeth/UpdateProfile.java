@@ -12,25 +12,25 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
-public class MainActivity2 extends AppCompatActivity {
+public class UpdateProfile extends AppCompatActivity {
     public String linkRealTime;
     TextView btnDangXuat;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main2);
+        setContentView(R.layout.update_profile);
         //anh xạ
         anhxa();
         btnDangXuat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FirebaseAuth.getInstance().signOut();
-                SweetAlertDialog pDialog = new SweetAlertDialog(MainActivity2.this, SweetAlertDialog.PROGRESS_TYPE);
+                SweetAlertDialog pDialog = new SweetAlertDialog(UpdateProfile.this, SweetAlertDialog.PROGRESS_TYPE);
                 pDialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
                 pDialog.setTitleText("Loading ...");
                 pDialog.setCancelable(true);
                 pDialog.show();
-                Intent introIntent = new Intent(MainActivity2.this, IntroActivity.class);
+                Intent introIntent = new Intent(UpdateProfile.this, IntroActivity.class);
                 startActivity(introIntent);
                 finishAffinity();
             }

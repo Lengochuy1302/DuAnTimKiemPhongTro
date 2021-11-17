@@ -41,11 +41,11 @@
         </activity>
 
         <activity
-            android:name=".MainActivity"
+            android:name=".DangNhapDangKy"
             android:exported="false" />
 
         <activity
-            android:name=".MainActivity2"
+            android:name=".UpdateProfile"
             android:exported="false" />
         <activity
             android:name=".IntroActivity"

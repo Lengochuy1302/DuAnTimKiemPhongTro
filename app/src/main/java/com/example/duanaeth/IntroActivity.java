@@ -93,7 +93,7 @@ public class IntroActivity extends AppCompatActivity {
                 text1.setVisibility(View.VISIBLE);
                 text2.setVisibility(View.VISIBLE);
                 text3.setVisibility(View.VISIBLE);
-                Intent intent = new Intent(IntroActivity.this, MainActivity.class);
+                Intent intent = new Intent(IntroActivity.this, DangNhapDangKy.class);
                 startActivity(intent);
             }
 
@@ -123,7 +123,7 @@ public class IntroActivity extends AppCompatActivity {
         if (currentUser == null) {
             return;
         } else {
-            startActivity(new Intent(IntroActivity.this, MainActivity2.class));
+            startActivity(new Intent(IntroActivity.this, UpdateProfile.class));
         }
     }
 
