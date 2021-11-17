@@ -28,6 +28,11 @@ import com.facebook.FacebookException;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
@@ -35,6 +40,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -44,8 +50,9 @@ import java.util.regex.Pattern;
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class MainActivity extends AppCompatActivity {
+    private static final int RC_SIGN_IN = 123;
     TextView btnDangNhap, btnDangKy;
-    ImageView btnEmailDK, btnQuayLai, btnFacebook, btnFacebook1;
+    ImageView btnEmailDK, btnQuayLai, btnFacebook, btnFacebook1, btnGoogle;
     EditText edtEmailDN, edtEmailDK, edtMatKhauDN, edtMatKhauDK, edtMatKhauDKLai;
     LinearLayout linearLayoutDangKy, linearLayoutDangNhap;
     LoginButton loginButton;
@@ -57,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
     private CallbackManager fbCallbackManager;
     private Animation zoom_out,slidedown, slideup;
     private TextView logo;
+    private GoogleSignInClient mGoogleSignInClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -120,7 +128,18 @@ public class MainActivity extends AppCompatActivity {
         //LoginFacebook
         setUpLoginFacebook();
 
+        //loginGoogle
+        creatRequest();
+        btnGoogle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                signIn();
+            }
+        });
+
     }
+
+
 
 
     //hàm login facebook
@@ -188,13 +207,71 @@ public class MainActivity extends AppCompatActivity {
                 });
     }
 
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
+    //hàm login bằng google
+    private void creatRequest() {
+        // Configure Google Sign In
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestEmail()
+                .build();
 
-        // Pass the activity result back to the Facebook SDK
-        fbCallbackManager.onActivityResult(requestCode, resultCode, data);
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+
     }
 
+    private void signIn() {
+        Intent signInIntent = mGoogleSignInClient.getSignInIntent();
+        startActivityForResult(signInIntent, RC_SIGN_IN);
+    }
+
+    private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
+
+
+        AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
+        mAuth.signInWithCredential(credential)
+                .addOnCompleteListener(this, new OnCompleteListener() {
+                    @Override
+                    public void onComplete(@NonNull Task task) {
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+                            FirebaseUser user = mAuth.getCurrentUser();
+                            Intent intent = new Intent(getApplicationContext(),MainActivity2.class);
+                            startActivity(intent);
+
+
+                        } else {
+                            Toast.makeText(MainActivity.this, "Sorry auth failed.", Toast.LENGTH_SHORT).show();
+
+
+                        }
+
+
+                        // ...
+                    }
+                });
+    }
+
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
+        if (requestCode == RC_SIGN_IN) {
+            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+            try {
+                // Google Sign In was successful, authenticate with Firebase
+                GoogleSignInAccount account = task.getResult(ApiException.class);
+                Toast.makeText(MainActivity.this, "ok", Toast.LENGTH_SHORT).show();
+                firebaseAuthWithGoogle(account);
+            } catch (ApiException e) {
+                // Google Sign In failed, update UI appropriately
+                Toast.makeText(MainActivity.this, "Sorry auth failed.", Toast.LENGTH_SHORT).show();
+            }
+        } else {
+            fbCallbackManager.onActivityResult(requestCode, resultCode, data);
+        }
+    }
 
     //hàm đăng ký
     private void dangKi() {
@@ -375,6 +452,7 @@ public class MainActivity extends AppCompatActivity {
         edtEmailDN = findViewById(R.id.emailDN);
         edtMatKhauDN = findViewById(R.id.matkhauDN);
         btnFacebook = findViewById(R.id.btnLoginFacebook);
+        btnGoogle = findViewById(R.id.btnLoginGoogle);
 //        btnFacebook1 = findViewById(R.id.btnLoginFacebook1);
         logo = findViewById(R.id.logoapp);
     }
