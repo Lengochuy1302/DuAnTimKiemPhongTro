@@ -1,11 +1,23 @@
 Dự Án Tìm Kiếm Phòng Trọ
 ===================
-Dự án tìm kiếm phòng trọ cho Android giúp người nhìn dễ dàng tìm kiếm phòng trọ.
+Dự án tìm kiếm phòng trọ cho Android giúp người dùng dễ dàng tìm kiếm phòng trọ.
 
 ## ScreenShot
 <p align="center">
-  <img src="https://firebasestorage.googleapis.com/v0/b/lengochuyasm.appspot.com/o/link%2FIMG_20211115_160107.png?alt=media&token=8bb74436-2e00-44ab-84c9-4cbbe0deaa6f" width="170" alt="accessibility text">
-  <img src="https://firebasestorage.googleapis.com/v0/b/lengochuyasm.appspot.com/o/link%2FIMG_20211116_071635%5B1%5D.png?alt=media&token=80b842fc-5faa-4e53-8992-8b1bdf164859" width="170" alt="accessibility text">
+  <img src="https://firebasestorage.googleapis.com/v0/b/lengochuyasm.appspot.com/o/link%2FIMG_20211117_124340%5B1%5D.png?alt=media&token=efab5cbf-c03a-4813-89a9-ce8a34ed78c2" width="150" alt="accessibility text">
+  ㅤㅤㅤ
+  <img src="https://firebasestorage.googleapis.com/v0/b/lengochuyasm.appspot.com/o/link%2FIMG_20211117_124349%5B1%5D.png?alt=media&token=03bba4ba-7142-47d7-9b26-4870d2c3f8ab" width="150" alt="accessibility text">
+  ㅤㅤㅤ
+  <img src="https://firebasestorage.googleapis.com/v0/b/lengochuyasm.appspot.com/o/link%2FIMG_20211116_071635%5B1%5D.png?alt=media&token=80b842fc-5faa-4e53-8992-8b1bdf164859" width="150" alt="accessibility text">
+  ㅤㅤㅤ
+    <img src="https://firebasestorage.googleapis.com/v0/b/lengochuyasm.appspot.com/o/link%2FIMG_20211117_124429%5B1%5D.png?alt=media&token=71ecdf0e-b357-4209-ac11-3a12fa5db096" width="150" alt="accessibility text">
+</p>
+
+<p align="center">
+  <img src="https://firebasestorage.googleapis.com/v0/b/lengochuyasm.appspot.com/o/link%2FIMG_20211117_124449%5B1%5D.png?alt=media&token=97f9ba01-4a11-4938-9a2f-55f70f154e8a" width="150" alt="accessibility text">
+<!--   <img src=" " width="170" alt="accessibility text">
+  <img src=" " width="170" alt="accessibility text">
+    <img src=" " width="170" alt="accessibility text"> -->
 </p>
 
 
