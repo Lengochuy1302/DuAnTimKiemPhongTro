@@ -18,8 +18,8 @@
     <color name="yellow">#FFEB3B</color>
     <color name="orange">#FF5722</color>
     <color name="red">#E30E27</color>
-
-
-
+    <color name="grey">#F1F0F0</color>
+    <color name="grey_dam">#595959</color>
+    <color name="xanhtruyen">#7CD2A6</color>
 
 </resources>
