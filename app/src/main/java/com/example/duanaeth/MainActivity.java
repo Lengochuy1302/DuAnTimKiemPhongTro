@@ -12,6 +12,8 @@ import android.os.Handler;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -53,6 +55,8 @@ public class MainActivity extends AppCompatActivity {
     private DatabaseReference reference;
     private FirebaseAuth mAuth;
     private CallbackManager fbCallbackManager;
+    private Animation zoom_out,slidedown, slideup;
+    private TextView logo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +64,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         //ánh xạ
         anhxa();
+
+
+        //Anima
+        zoom_out = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.zoom_out);
+        slidedown = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.slidedown);
+        slideup = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.slideup);
+        logo.setVisibility(View.VISIBLE);
+        logo.startAnimation(zoom_out);
 
         //firebase
         mAuth = FirebaseAuth.getInstance();
@@ -71,8 +83,10 @@ public class MainActivity extends AppCompatActivity {
         btnEmailDK.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                linearLayoutDangKy.setVisibility(View.VISIBLE);
+                linearLayoutDangNhap.startAnimation(slidedown);
                 linearLayoutDangNhap.setVisibility(View.GONE);
+                linearLayoutDangKy.startAnimation(slideup);
+                linearLayoutDangKy.setVisibility(View.VISIBLE);
             }
         });
 
@@ -80,7 +94,9 @@ public class MainActivity extends AppCompatActivity {
         btnQuayLai.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                linearLayoutDangKy.startAnimation(slidedown);
                 linearLayoutDangKy.setVisibility(View.GONE);
+                linearLayoutDangNhap.startAnimation(slideup);
                 linearLayoutDangNhap.setVisibility(View.VISIBLE);
             }
         });
@@ -360,5 +376,6 @@ public class MainActivity extends AppCompatActivity {
         edtMatKhauDN = findViewById(R.id.matkhauDN);
         btnFacebook = findViewById(R.id.btnLoginFacebook);
 //        btnFacebook1 = findViewById(R.id.btnLoginFacebook1);
+        logo = findViewById(R.id.logoapp);
     }
 }
