@@ -14,7 +14,7 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class TrangChu extends AppCompatActivity {
     public String linkRealTime;
-    TextView btnDangXuat;
+    TextView btnDangXuat, prof;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +35,20 @@ public class TrangChu extends AppCompatActivity {
                 finishAffinity();
             }
         });
+
+        prof.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SweetAlertDialog pDialog = new SweetAlertDialog(TrangChu.this, SweetAlertDialog.PROGRESS_TYPE);
+                pDialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
+                pDialog.setTitleText("Loading ...");
+                pDialog.setCancelable(true);
+                pDialog.show();
+                Intent introIntent = new Intent(TrangChu.this, UpdateProfile.class);
+                startActivity(introIntent);
+                finishAffinity();
+            }
+        });
     }
 
     final private void anhxa() {
@@ -42,6 +56,6 @@ public class TrangChu extends AppCompatActivity {
         linkRealTime = getResources().getString(R.string.link_RealTime_Database);
         //findViewById
         btnDangXuat = findViewById(R.id.btndangxuat);
-
+        prof = findViewById(R.id.profile);
     }
 }
