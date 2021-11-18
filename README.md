@@ -18,8 +18,9 @@ Ngày nay đời sống của người dân tăng cao, nhiều người rời kh
 
 <p align="center">
   <img src="https://firebasestorage.googleapis.com/v0/b/lengochuyasm.appspot.com/o/link%2FIMG_20211117_124449%5B1%5D.png?alt=media&token=97f9ba01-4a11-4938-9a2f-55f70f154e8a" width="150" alt="accessibility text">
+    ㅤㅤㅤ
+  <img src="https://firebasestorage.googleapis.com/v0/b/lengochuyasm.appspot.com/o/link%2FIMG_20211117_222949%5B1%5D.png?alt=media&token=51ea64f2-b89b-4470-ad49-4da9f33f22cf" width="150" alt="accessibility text">
 <!--   <img src=" " width="170" alt="accessibility text">
-  <img src=" " width="170" alt="accessibility text">
     <img src=" " width="170" alt="accessibility text"> -->
 </p>
 
@@ -51,5 +52,5 @@ Ngày nay đời sống của người dân tăng cao, nhiều người rời kh
  |  3 | Thiết kế giao diện app bằng Photoshop, Adobe XD| 05/11/2020 | 2 tiếng | Hoàn thành | Lê Ngọc Huy, Hoàng Tuấn Đạt, Nguyễn Trường Giang, Nguyễn Duy Tài |
  |  4 | Thiết kế giao diện, chức năng màn hình chào| 07/11/2020 | 1 tiếng | Hoàn thành | Nguyễn Trường Giang, Nguyễn Duy Tài |
  |  5 | Tìm kiếm icon, png, gif cho dự án| 07/11/2020 | 1 tiếng | Hoàn thành | Nguyễn Duy Tài |
- |  6 | Thiết kế giao diện, Animation màn hình đăng nhập đăng ký| 07/11/2020 | 3 tiếng | Hoàn thành |  Hoàng Tuấn Đạt|
- |  7 | Viết chức năng đăng nhập đăng ký| 07/11/2020 | 3 tiếng | Hoàn thành | Lê Ngọc Huy |
+ |  6 | Thiết kế giao diện, Animation màn hình đăng nhập đăng ký| 08/11/2020 | 3 tiếng | Hoàn thành |  Hoàng Tuấn Đạt, Lê Ngọc Huy|
+ |  7 | Viết chức năng đăng nhập đăng ký bằng firebase| 09/11/2020 | 3 tiếng | Hoàn thành | Lê Ngọc Huy, Hoàng Tuấn Đạt |
