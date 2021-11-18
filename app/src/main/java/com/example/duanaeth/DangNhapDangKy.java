@@ -230,6 +230,12 @@ public class DangNhapDangKy extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d("AAAU", "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
+                            Device device = new Device();
+                            String iddevice = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
+                            device.setID("ThietBi");
+                            device.setTenDevice(iddevice);
+                            reference = FirebaseDatabase.getInstance(linkRealTime).getReference("users").child(user.getUid()).child("DeviceID");
+                            reference.child("ThietBi").setValue(device);
 
                         } else {
                             // If sign in fails, display a message to the user.
@@ -270,10 +276,22 @@ public class DangNhapDangKy extends AppCompatActivity {
                             FirebaseUser user = mAuth.getCurrentUser();
                             String phone = user.getPhoneNumber();
                             if (phone.isEmpty()) {
+                                Device device = new Device();
+                                String iddevice = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
+                                device.setID("ThietBi");
+                                device.setTenDevice(iddevice);
+                                reference = FirebaseDatabase.getInstance(linkRealTime).getReference("users").child(user.getUid()).child("DeviceID");
+                                reference.child("ThietBi").setValue(device);
                                 Toast.makeText(DangNhapDangKy.this, "Tên trống.", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(getApplicationContext(), UpdateProfile.class);
                                 startActivity(intent);
                             } else {
+                                Device device = new Device();
+                                String iddevice = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
+                                device.setID("ThietBi");
+                                device.setTenDevice(iddevice);
+                                reference = FirebaseDatabase.getInstance(linkRealTime).getReference("users").child(user.getUid()).child("DeviceID");
+                                reference.child("ThietBi").setValue(device);
                                 Toast.makeText(DangNhapDangKy.this, "Đã có tên.", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(getApplicationContext(), TrangChu.class);
                                 startActivity(intent);
