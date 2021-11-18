@@ -52,6 +52,9 @@
             android:name=".UpdateProfile"
             android:exported="false" />
         <activity
+            android:name=".onBroadingSrceen"
+            android:exported="false" />
+        <activity
             android:name=".IntroActivity"
             android:exported="true">
             <intent-filter>

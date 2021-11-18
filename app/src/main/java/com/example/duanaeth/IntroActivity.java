@@ -97,7 +97,7 @@ public class IntroActivity extends AppCompatActivity {
                 text1.setVisibility(View.VISIBLE);
                 text2.setVisibility(View.VISIBLE);
                 text3.setVisibility(View.VISIBLE);
-                Intent intent = new Intent(IntroActivity.this, DangNhapDangKy.class);
+                Intent intent = new Intent(IntroActivity.this, onBroadingSrceen.class);
                 startActivity(intent);
             }
 
