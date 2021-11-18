@@ -6,6 +6,7 @@ import android.Manifest;
 import android.content.Intent;
 import android.graphics.LinearGradient;
 import android.graphics.Shader;
+import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.TextPaint;
@@ -29,6 +30,9 @@ public class IntroActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intro);
         getSupportActionBar().hide();
+
+        MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.timi);
+        mediaPlayer.start();
 
         Animation animation = AnimationUtils.loadAnimation(this, R.anim.zoom);
         ImageView anhChinh = this.findViewById(R.id.anhChinh);
