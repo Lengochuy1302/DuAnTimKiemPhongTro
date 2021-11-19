@@ -10,15 +10,15 @@
     <string name="fb_login_protocol_scheme">fb2277195479253822</string>
 
     //Headings
-    <string name="heading_one">Quick &amp; Easy Payments</string>
-    <string name="heading_two">Instant Notifications</string>
-    <string name="heading_three">Cashless Payment</string>
-    <string name="heading_fourth">Pay Anywhere</string>
+    <string name="heading_one">AETH HOUSE</string>
+    <string name="heading_two">Định vị vị trí</string>
+    <string name="heading_three">Tìm bạn ở ghép</string>
+    <string name="heading_fourth">Bảo mật tuyệt đối</string>
 
     //Description
-    <string name="desc_one">Grow your Business By Accepting Card Payments with The New Card Reader</string>
-    <string name="desc_two">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</string>
-    <string name="desc_three">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</string>
-    <string name="desc_fourth">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</string>
+    <string name="desc_one">Ứng dụng giúp lọc và tìm kiếm  thông minh giúp bạn tìm được phòng trọ, nhà trọ đúng với nhu cầu.</string>
+    <string name="desc_two">Giúp bạn định vị được vị trí của nhà trọ một cách tiện lợi và nhanh chóng trên bản đồ.</string>
+    <string name="desc_three">Cho phép người dùng có thể tìm được người ở ghép có cùng nhu cầu và sở thích.</string>
+    <string name="desc_fourth">Bảo mật tuyệt đối thông tin cá nhân và quyền riêng tư của người dùng.</string>
 
 </resources>

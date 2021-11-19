@@ -72,7 +72,6 @@ public class ViewPagerAdapter extends PagerAdapter {
 
 
 
-
         slidetitleimage.setImageResource(images[position]);
         slideHeading.setText(headings[position]);
         slideDesciption.setText(description[position]);
