@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/btnthongke"
+        android:title="Thuê Trọ"
+        android:icon="@drawable/ic_baseline_home_24">
+
+    </item>
+    <item
+        android:id="@+id/btnthunhap"
+        android:title="Phòng Ghép"
+        android:icon="@drawable/ic_baseline_group_24">
+
+    </item>
+
+    <item
+        android:id="@+id/btnchitieu"
+        android:title="Nhắn Tin"
+        android:icon="@drawable/ic_baseline_message_24">
+
+    </item>
+
+    <item
+        android:id="@+id/btncaidat"
+        android:title="Cài Đặt"
+        android:icon="@drawable/ic_baseline_settings_24">
+
+    </item>
+
+
+</menu>

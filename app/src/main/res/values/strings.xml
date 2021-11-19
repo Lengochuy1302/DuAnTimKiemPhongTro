@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">AETH HOUSE</string>
-
+    <string name="open">Open</string>
+    <string name="close">Close</string>
     //Link dẫn Firebase
     //firebase
     <string name="link_RealTime_Database">https://aethhouse-default-rtdb.asia-southeast1.firebasedatabase.app/</string>

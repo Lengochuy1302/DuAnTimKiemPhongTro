@@ -539,7 +539,6 @@ public class UpdateProfile extends AppCompatActivity {
         });
     }
 
-
     @Override
     public void onBackPressed() {
             startActivity(new Intent(UpdateProfile.this, TrangChu.class));

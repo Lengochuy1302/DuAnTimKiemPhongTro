@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.Settings;
@@ -123,7 +124,18 @@ public class DangNhapDangKy extends AppCompatActivity {
         });
 
         //LoginFacebook
-        setUpLoginFacebook();
+        btnFacebook.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setUpLoginFacebook();
+            }
+        });
+        btnFacebook1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setUpLoginFacebook();
+            }
+        });
 
         //loginGoogle
         creatRequest();
@@ -146,9 +158,7 @@ public class DangNhapDangKy extends AppCompatActivity {
 
     //hàm login facebook
     private void setUpLoginFacebook() {
-        btnFacebook.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                 SweetAlertDialog pDialog = new SweetAlertDialog(DangNhapDangKy.this, SweetAlertDialog.PROGRESS_TYPE);
                 pDialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
                 pDialog.setTitleText("Loading ...");
@@ -161,7 +171,9 @@ public class DangNhapDangKy extends AppCompatActivity {
                         @Override
                         public void onSuccess(LoginResult loginResult) {
                             pDialog.dismiss();
-                            Toast.makeText(DangNhapDangKy.this, "Dang nhap thanh cong", Toast.LENGTH_SHORT).show();
+
+
+                            Toast.makeText(DangNhapDangKy.this, "Dang nhap thanh cong" + loginResult.getAccessToken(), Toast.LENGTH_SHORT).show();
                             handleFacebookAccessToken(loginResult.getAccessToken());
                             Intent introIntent = new Intent(DangNhapDangKy.this, UpdateProfile.class);
                             startActivity(introIntent);
@@ -180,44 +192,6 @@ public class DangNhapDangKy extends AppCompatActivity {
                             Toast.makeText(DangNhapDangKy.this, "Dang nhap err", Toast.LENGTH_SHORT).show();
                         }
                     });
-            }
-        });
-        btnFacebook1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SweetAlertDialog pDialog = new SweetAlertDialog(DangNhapDangKy.this, SweetAlertDialog.PROGRESS_TYPE);
-                pDialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
-                pDialog.setTitleText("Loading ...");
-                pDialog.setCancelable(true);
-                pDialog.show();
-                fbCallbackManager = CallbackManager.Factory.create();
-                LoginManager.getInstance().logInWithReadPermissions(DangNhapDangKy.this,
-                        Arrays.asList("email", "public_profile"));
-                LoginManager.getInstance().registerCallback(fbCallbackManager, new FacebookCallback<LoginResult>() {
-                    @Override
-                    public void onSuccess(LoginResult loginResult) {
-                        pDialog.dismiss();
-                        Toast.makeText(DangNhapDangKy.this, "Dang nhap thanh cong", Toast.LENGTH_SHORT).show();
-                        handleFacebookAccessToken(loginResult.getAccessToken());
-                        Intent introIntent = new Intent(DangNhapDangKy.this, UpdateProfile.class);
-                        startActivity(introIntent);
-                        finishAffinity();
-                    }
-
-                    @Override
-                    public void onCancel() {
-                        pDialog.dismiss();
-                        Toast.makeText(DangNhapDangKy.this, "Dang nhap cancel", Toast.LENGTH_SHORT).show();
-                    }
-
-                    @Override
-                    public void onError(FacebookException error) {
-                        pDialog.dismiss();
-                        Toast.makeText(DangNhapDangKy.this, "Dang nhap err", Toast.LENGTH_SHORT).show();
-                    }
-                });
-            }
-        });
     }
 
     private void handleFacebookAccessToken(AccessToken token) {
@@ -227,26 +201,16 @@ public class DangNhapDangKy extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-                            Log.d("AAAU", "signInWithCredential:success");
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            Device device = new Device();
-                            String iddevice = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
-                            device.setID("ThietBi");
-                            device.setTenDevice(iddevice);
-                            reference = FirebaseDatabase.getInstance(linkRealTime).getReference("users").child(user.getUid()).child("DeviceID");
-                            reference.child("ThietBi").setValue(device);
 
                         } else {
                             // If sign in fails, display a message to the user.
-                            Log.w("AAAU", "signInWithCredential:failure", task.getException());
                             Toast.makeText(DangNhapDangKy.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
-
                         }
                     }
                 });
     }
+
 
     //hàm login bằng google
     private void creatRequest() {
@@ -273,26 +237,18 @@ public class DangNhapDangKy extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
-                            FirebaseUser user = mAuth.getCurrentUser();
+                            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                            Device device = new Device();
+                            String iddevice = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
+                            device.setID("ThietBi");
+                            device.setTenDevice(iddevice);
+                            reference = FirebaseDatabase.getInstance(linkRealTime).getReference("users").child(user.getUid()).child("DeviceID");
+                            reference.child("ThietBi").setValue(device);
                             String phone = user.getPhoneNumber();
-                            if (phone.isEmpty()) {
-                                Device device = new Device();
-                                String iddevice = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
-                                device.setID("ThietBi");
-                                device.setTenDevice(iddevice);
-                                reference = FirebaseDatabase.getInstance(linkRealTime).getReference("users").child(user.getUid()).child("DeviceID");
-                                reference.child("ThietBi").setValue(device);
-                                Toast.makeText(DangNhapDangKy.this, "Tên trống.", Toast.LENGTH_SHORT).show();
+                            if (phone == null) {
                                 Intent intent = new Intent(getApplicationContext(), UpdateProfile.class);
                                 startActivity(intent);
                             } else {
-                                Device device = new Device();
-                                String iddevice = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
-                                device.setID("ThietBi");
-                                device.setTenDevice(iddevice);
-                                reference = FirebaseDatabase.getInstance(linkRealTime).getReference("users").child(user.getUid()).child("DeviceID");
-                                reference.child("ThietBi").setValue(device);
-                                Toast.makeText(DangNhapDangKy.this, "Đã có tên.", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(getApplicationContext(), TrangChu.class);
                                 startActivity(intent);
                             }

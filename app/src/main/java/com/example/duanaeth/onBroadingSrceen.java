@@ -165,7 +165,7 @@ public class onBroadingSrceen extends AppCompatActivity {
         if (currentUser == null) {
             return;
         } else {
-            startActivity(new Intent(onBroadingSrceen.this, UpdateProfile.class));
+            startActivity(new Intent(onBroadingSrceen.this, TrangChu.class));
         }
     }
 
