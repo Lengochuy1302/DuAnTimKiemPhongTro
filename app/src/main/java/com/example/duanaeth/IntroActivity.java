@@ -118,39 +118,6 @@ public class IntroActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        clickrequest();
 
-        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-        if (currentUser == null) {
-            return;
-        } else {
-            startActivity(new Intent(IntroActivity.this, UpdateProfile.class));
-        }
-    }
-
-    private void clickrequest() {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M){
-            return;
-        }
-        PermissionListener permissionListener = new PermissionListener() {
-            @Override
-            public void onPermissionGranted() {
-
-            }
-
-            @Override
-            public void onPermissionDenied(List<String> deniedPermissions) {
-
-            }
-        };
-        TedPermission.with(IntroActivity.this)
-                .setPermissionListener(permissionListener)
-                .setDeniedMessage("Nếu bạn không cho phép thì một số chức năng như 'Nhập văn bản bằng giọng nói', 'Upload avatar' không thể sử dụng được!\n \nNếu bạn muốn bật lại nó thì hãy vào phần [Setting] > [Quyền truy cập] > [Bật các quyền truy cập]")
-                .setPermissions(Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.RECORD_AUDIO)
-                .check();
-    }
 
 }

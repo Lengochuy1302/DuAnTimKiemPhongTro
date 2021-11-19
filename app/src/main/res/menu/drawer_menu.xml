@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="@tools:sample/first_names">
+
+    <!--now add some icons-->
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/thongke"
+            android:title="Thuê Trọ"
+            android:icon="@drawable/ic_baseline_home_24"
+            />
+        <item
+            android:id="@+id/khoanthu"
+            android:title="Phòng ghép"
+            android:icon="@drawable/ic_baseline_group_24"
+            />
+        <item
+            android:id="@+id/khoanchi"
+            android:title="Nhắn Tin"
+            android:icon="@drawable/ic_baseline_message_24"
+            />
+        <item
+            android:id="@+id/ghichu"
+            android:title="Cài Đặt"
+            android:icon="@drawable/ic_baseline_settings_24"
+            />
+
+        />
+
+    </group>
+
+    <item android:title="Các tiện ích"
+        >
+
+        <menu>
+            <item
+                android:id="@+id/capnhat"
+                android:title="Thông tin người dùng"
+
+                />
+
+            <item
+                android:id="@+id/doimatkhau"
+                android:title="Đặt lại mật khẩu"
+
+                />
+            <item
+                android:id="@+id/intro"
+                android:title="Giới thiệu phần mềm"
+
+                />
+
+            <item
+                android:id="@+id/logout"
+                android:title="Đăng xuất tài khoản"
+
+                />
+        </menu>
+
+    </item>
+
+    <item android:title="Hỗ trợ"
+        >
+
+        <menu>
+            <item
+                android:id="@+id/donggopykien"
+                android:title="Phản hồi người dùng"
+
+                />
+            <item
+                android:id="@+id/thongtin"
+                android:title="Thông tin ứng dụng"
+
+                />
+            <item
+                android:id="@+id/gioithieu"
+                android:title="Cập nhật bản mới"
+
+                />
+            <item
+                android:id="@+id/phienban"
+                android:title="Thông tin phiên bản"
+
+                />
+        </menu>
+
+    </item>
+
+</menu>

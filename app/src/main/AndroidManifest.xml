@@ -21,6 +21,14 @@
         android:roundIcon="@drawable/iconlogoapp"
         android:supportsRtl="true"
         android:theme="@style/Theme.DuAnAETH">
+        <receiver android:name=".OTP_Receiver"
+            android:permission="android.permission.BROADCAST_SMS">
+
+            <intent-filter>
+                <action android:name="android.provider.Telephony.SMS_RECEIVED"/>
+            </intent-filter>
+
+        </receiver>
         <activity
             android:name=".TrangChu"
             android:exported="false" />

@@ -91,6 +91,7 @@
                     app:startIconDrawable="@drawable/ic_baseline_email_24">
 
                     <EditText
+                        android:enabled="false"
                         android:id="@+id/til_mail_capNhatActivity"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
@@ -101,11 +102,13 @@
                     android:layout_marginTop="5dp"
                     android:layout_height="wrap_content">
 
+
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/textInputLayout2"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="0dp"
                         android:layout_height="62dp"
+                        android:layout_marginEnd="8dp"
                         android:hint="Ngày sinh"
                         app:boxStrokeColor="#7CD2A6"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -117,15 +120,26 @@
                         <EditText
                             android:id="@+id/til_birtday_capNhatActivity"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:enabled="true" />
+
+
                     </com.google.android.material.textfield.TextInputLayout>
+
+                    <TextView
+                        android:id="@+id/ganngay"
+                        android:layout_width="0dp"
+                        android:layout_height="60dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/textInputLayout2"
+                        app:layout_constraintEnd_toEndOf="@+id/textInputLayout2"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/textInputLayout3"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_width="140dp"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                        android:layout_width="0dp"
                         android:layout_height="62dp"
-                        android:layout_marginLeft="5dp"
                         android:hint="Giới tính"
                         app:boxStrokeColor="#7CD2A6"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -134,10 +148,11 @@
                         app:layout_constraintTop_toTopOf="parent"
                         app:startIconDrawable="@drawable/ic_baseline_wc_24">
 
-                        <EditText
+                        <AutoCompleteTextView
                             android:id="@+id/til_gioitinh_capNhatActivity"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="53dp"
+                            android:inputType="none" />
                     </com.google.android.material.textfield.TextInputLayout>
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -233,6 +248,7 @@
                         android:text="HOÀN TẤT"
                         android:textColor="#FFFFFF"
                         android:textSize="16sp"
+                        android:gravity="center"
                         android:textStyle="bold"
                         android:visibility="gone"
                         app:layout_constraintBottom_toBottomOf="parent"

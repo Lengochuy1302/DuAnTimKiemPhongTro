@@ -3,8 +3,20 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/BaiTapDuAn/app/src/main/res/drawable/background_edttextdox.xml" value="0.14166666666666666" />
+        <entry key="..\:/BaiTapDuAn/app/src/main/res/drawable/backgroundcsc.xml" value="0.14166666666666666" />
+        <entry key="..\:/BaiTapDuAn/app/src/main/res/drawable/maubuton.xml" value="0.14166666666666666" />
         <entry key="..\:/BaiTapDuAn/app/src/main/res/layout/activity_main.xml" value="0.25052083333333336" />
         <entry key="..\:/BaiTapDuAn/app/src/main/res/layout/activity_main2.xml" value="0.25052083333333336" />
+        <entry key="..\:/BaiTapDuAn/app/src/main/res/layout/activity_trang_chu.xml" value="0.1" />
+        <entry key="..\:/BaiTapDuAn/app/src/main/res/layout/dang_nhap_dang_ky.xml" value="0.24666666666666667" />
+        <entry key="..\:/BaiTapDuAn/app/src/main/res/layout/layout_thongtin.xml" value="0.2212962962962963" />
+        <entry key="..\:/BaiTapDuAn/app/src/main/res/layout/on_broading_screen.xml" value="0.246875" />
+        <entry key="..\:/BaiTapDuAn/app/src/main/res/layout/update_profile.xml" value="0.2" />
+        <entry key="..\:/BaiTapDuAn/app/src/main/res/menu/bottom_navigation.xml" value="0.25052083333333336" />
+        <entry key="..\:/BaiTapDuAn/app/src/main/res/menu/drawer_menu.xml" value="0.13020833333333334" />
+        <entry key="..\:/BaiTapDuAn/app/src/main/res/menu/ghichunote.xml" value="0.11481481481481481" />
+        <entry key="..\:/BaiTapDuAn/app/src/main/res/menu/toolbar_search.xml" value="0.25052083333333336" />
         <entry key="..\:/DuAn/DuAn1FPT/app/src/main/res/drawable/maubuton.xml" value="0.26614583333333336" />
         <entry key="..\:/DuAn/DuAn1FPT/app/src/main/res/drawable/maunendangnhapdangky.xml" value="0.26614583333333336" />
         <entry key="..\:/DuAn/DuAn1FPT/app/src/main/res/drawable/nenformdangky.xml" value="0.26614583333333336" />

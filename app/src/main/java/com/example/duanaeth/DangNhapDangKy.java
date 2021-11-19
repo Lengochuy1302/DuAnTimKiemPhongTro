@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.Settings;
@@ -49,10 +50,10 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 public class DangNhapDangKy extends AppCompatActivity {
     private static final int RC_SIGN_IN = 123;
     TextView btnDangNhap, btnDangKy;
-    ImageView btnEmailDK, btnQuayLai, btnFacebook, btnFacebook1, btnGoogle;
+    ImageView btnEmailDK, btnQuayLai, btnFacebook, btnFacebook1, btnGoogle, btnGoogle1;
     EditText edtEmailDN, edtEmailDK, edtMatKhauDN, edtMatKhauDK, edtMatKhauDKLai;
     LinearLayout linearLayoutDangKy, linearLayoutDangNhap;
-    LoginButton loginButton;
+    String namegoogle, avatargoogle, email;
 
     //Firebase
     public String linkRealTime;
@@ -123,7 +124,18 @@ public class DangNhapDangKy extends AppCompatActivity {
         });
 
         //LoginFacebook
-        setUpLoginFacebook();
+        btnFacebook.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setUpLoginFacebook();
+            }
+        });
+        btnFacebook1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setUpLoginFacebook();
+            }
+        });
 
         //loginGoogle
         creatRequest();
@@ -133,7 +145,12 @@ public class DangNhapDangKy extends AppCompatActivity {
                 signIn();
             }
         });
-
+        btnGoogle1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                signIn();
+            }
+        });
     }
 
 
@@ -141,9 +158,7 @@ public class DangNhapDangKy extends AppCompatActivity {
 
     //hàm login facebook
     private void setUpLoginFacebook() {
-        btnFacebook.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                 SweetAlertDialog pDialog = new SweetAlertDialog(DangNhapDangKy.this, SweetAlertDialog.PROGRESS_TYPE);
                 pDialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
                 pDialog.setTitleText("Loading ...");
@@ -156,7 +171,9 @@ public class DangNhapDangKy extends AppCompatActivity {
                         @Override
                         public void onSuccess(LoginResult loginResult) {
                             pDialog.dismiss();
-                            Toast.makeText(DangNhapDangKy.this, "Dang nhap thanh cong", Toast.LENGTH_SHORT).show();
+
+
+                            Toast.makeText(DangNhapDangKy.this, "Dang nhap thanh cong" + loginResult.getAccessToken(), Toast.LENGTH_SHORT).show();
                             handleFacebookAccessToken(loginResult.getAccessToken());
                             Intent introIntent = new Intent(DangNhapDangKy.this, UpdateProfile.class);
                             startActivity(introIntent);
@@ -175,34 +192,25 @@ public class DangNhapDangKy extends AppCompatActivity {
                             Toast.makeText(DangNhapDangKy.this, "Dang nhap err", Toast.LENGTH_SHORT).show();
                         }
                     });
-            }
-        });
-
     }
 
     private void handleFacebookAccessToken(AccessToken token) {
-        Log.d("AAAU", "handleFacebookAccessToken:" + token);
-
         AuthCredential credential = FacebookAuthProvider.getCredential(token.getToken());
         mAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-                            Log.d("AAAU", "signInWithCredential:success");
-                            FirebaseUser user = mAuth.getCurrentUser();
 
                         } else {
                             // If sign in fails, display a message to the user.
-                            Log.w("AAAU", "signInWithCredential:failure", task.getException());
                             Toast.makeText(DangNhapDangKy.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
-
                         }
                     }
                 });
     }
+
 
     //hàm login bằng google
     private void creatRequest() {
@@ -221,29 +229,33 @@ public class DangNhapDangKy extends AppCompatActivity {
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
 
-    private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
-
-
-        AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
+    private void firebaseAuthWithGoogle(String idToken) {
+        AuthCredential credential = GoogleAuthProvider.getCredential(idToken, null);
         mAuth.signInWithCredential(credential)
-                .addOnCompleteListener(this, new OnCompleteListener() {
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
-                    public void onComplete(@NonNull Task task) {
+                    public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            Intent intent = new Intent(getApplicationContext(), UpdateProfile.class);
-                            startActivity(intent);
-
-
+                            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                            Device device = new Device();
+                            String iddevice = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
+                            device.setID("ThietBi");
+                            device.setTenDevice(iddevice);
+                            reference = FirebaseDatabase.getInstance(linkRealTime).getReference("users").child(user.getUid()).child("DeviceID");
+                            reference.child("ThietBi").setValue(device);
+                            String phone = user.getPhoneNumber();
+                            if (phone == null) {
+                                Intent intent = new Intent(getApplicationContext(), UpdateProfile.class);
+                                startActivity(intent);
+                            } else {
+                                Intent intent = new Intent(getApplicationContext(), TrangChu.class);
+                                startActivity(intent);
+                            }
                         } else {
+                            // If sign in fails, display a message to the user.
                             Toast.makeText(DangNhapDangKy.this, "Sorry auth failed.", Toast.LENGTH_SHORT).show();
-
-
                         }
-
-
-                        // ...
                     }
                 });
     }
@@ -259,20 +271,20 @@ public class DangNhapDangKy extends AppCompatActivity {
             try {
                 // Google Sign In was successful, authenticate with Firebase
                 GoogleSignInAccount account = task.getResult(ApiException.class);
-                Toast.makeText(DangNhapDangKy.this, "ok", Toast.LENGTH_SHORT).show();
-                firebaseAuthWithGoogle(account);
+                firebaseAuthWithGoogle(account.getIdToken());
             } catch (ApiException e) {
                 // Google Sign In failed, update UI appropriately
-                Toast.makeText(DangNhapDangKy.this, "Sorry auth failed.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(DangNhapDangKy.this, "Sorry.", Toast.LENGTH_SHORT).show();
             }
         } else {
             fbCallbackManager.onActivityResult(requestCode, resultCode, data);
         }
     }
 
+
+
     //hàm đăng ký
     private void dangKi() {
-
             String emaildk = edtEmailDK.getText().toString().trim();
             String matkhaudk = edtMatKhauDK.getText().toString().trim();
             String matkhaudklai = edtMatKhauDKLai.getText().toString().trim();
@@ -356,6 +368,7 @@ public class DangNhapDangKy extends AppCompatActivity {
 
             }
     }
+
 
     //hàm đăng nhập
     private void dangNhap() {
@@ -450,7 +463,8 @@ public class DangNhapDangKy extends AppCompatActivity {
         edtMatKhauDN = findViewById(R.id.matkhauDN);
         btnFacebook = findViewById(R.id.btnLoginFacebook);
         btnGoogle = findViewById(R.id.btnLoginGoogle);
-//        btnFacebook1 = findViewById(R.id.btnLoginFacebook1);
+        btnGoogle1 = findViewById(R.id.btnLoginGoogle1);
+        btnFacebook1 = findViewById(R.id.btnLoginFacebook1);
         logo = findViewById(R.id.logoapp);
     }
 }
