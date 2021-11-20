@@ -1,6 +1,5 @@
 package com.example.duanaeth;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,7 +9,6 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -22,14 +20,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.duanaeth.FirebaseAdapter.Device;
+import com.example.duanaeth.SplashScreen.IntroActivity;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
-
-import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class TrangChu extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     public String linkRealTime;

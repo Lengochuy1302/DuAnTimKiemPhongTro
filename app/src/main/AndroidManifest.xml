@@ -21,7 +21,7 @@
         android:roundIcon="@drawable/iconlogoapp"
         android:supportsRtl="true"
         android:theme="@style/Theme.DuAnAETH">
-        <receiver android:name=".OTP_Receiver"
+        <receiver android:name=".FirebaseAdapter.OTP_Receiver"
             android:permission="android.permission.BROADCAST_SMS">
 
             <intent-filter>
@@ -60,10 +60,10 @@
             android:name=".UpdateProfile"
             android:exported="false" />
         <activity
-            android:name=".onBroadingSrceen"
+            android:name=".SplashScreen.onBroadingSrceen"
             android:exported="false" />
         <activity
-            android:name=".IntroActivity"
+            android:name=".SplashScreen.IntroActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

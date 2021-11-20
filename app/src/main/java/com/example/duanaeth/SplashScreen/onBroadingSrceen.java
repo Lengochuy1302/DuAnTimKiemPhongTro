@@ -1,13 +1,10 @@
-package com.example.duanaeth;
+package com.example.duanaeth.SplashScreen;
 
 import android.Manifest;
 import android.content.Intent;
-import android.graphics.LinearGradient;
-import android.graphics.Shader;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
-import android.text.TextPaint;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -16,6 +13,9 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
+import com.example.duanaeth.DangNhapDangKy;
+import com.example.duanaeth.R;
+import com.example.duanaeth.TrangChu;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.gun0912.tedpermission.PermissionListener;
@@ -69,7 +69,7 @@ public class onBroadingSrceen extends AppCompatActivity {
                     mSLideViewPager.setCurrentItem(getitem(1),true);
                 else {
 
-                    Intent i = new Intent(onBroadingSrceen.this,DangNhapDangKy.class);
+                    Intent i = new Intent(onBroadingSrceen.this, DangNhapDangKy.class);
                     startActivity(i);
                     finish();
 

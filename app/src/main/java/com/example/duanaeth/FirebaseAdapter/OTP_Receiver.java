@@ -1,4 +1,4 @@
-package com.example.duanaeth;
+package com.example.duanaeth.FirebaseAdapter;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;

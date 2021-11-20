@@ -1,13 +1,11 @@
-package com.example.duanaeth;
+package com.example.duanaeth.SplashScreen;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.Manifest;
 import android.content.Intent;
 import android.graphics.LinearGradient;
 import android.graphics.Shader;
 import android.media.MediaPlayer;
-import android.os.Build;
 import android.os.Bundle;
 import android.text.TextPaint;
 import android.view.View;
@@ -16,12 +14,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.gun0912.tedpermission.PermissionListener;
-import com.gun0912.tedpermission.TedPermission;
-
-import java.util.List;
+import com.example.duanaeth.R;
 
 public class IntroActivity extends AppCompatActivity {
 
