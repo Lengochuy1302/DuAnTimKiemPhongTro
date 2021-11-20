@@ -54,3 +54,5 @@ Ngày nay đời sống của người dân tăng cao, nhiều người rời kh
  |  5 | Tìm kiếm icon, png, gif cho dự án| 07/11/2020 | 1 tiếng | Hoàn thành | Nguyễn Duy Tài |
  |  6 | Thiết kế giao diện, Animation màn hình đăng nhập đăng ký| 08/11/2020 | 3 tiếng | Hoàn thành |  Hoàng Tuấn Đạt, Lê Ngọc Huy|
  |  7 | Viết chức năng đăng nhập đăng ký bằng firebase| 09/11/2020 | 3 tiếng | Hoàn thành | Lê Ngọc Huy, Hoàng Tuấn Đạt |
+ |  8 | 
+ 
