@@ -1,10 +1,12 @@
 package com.example.duanaeth;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
 
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
@@ -21,7 +23,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.duanaeth.FirebaseAdapter.Device;
+import com.example.duanaeth.FragmentLayout.NhaTro_Fragment;
+import com.example.duanaeth.FragmentLayout.NhanTin_Fragment;
+import com.example.duanaeth.FragmentLayout.PhongGhep_Fragment;
+import com.example.duanaeth.FragmentLayout.Setting_Fragment;
 import com.example.duanaeth.SplashScreen.IntroActivity;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -36,6 +43,16 @@ public class TrangChu extends AppCompatActivity implements NavigationView.OnNavi
     private NavigationView navigationView;
     FrameLayout frameLayout;
     private DatabaseReference reference;
+    private BottomNavigationView bottomNavigationView;
+    private static final  int FRAGMENT_THU = 1;
+    private static final  int FRAGMENT_CHI = 2;
+    private static final  int FRAGMENT_THONGKE = 3;
+    private static final  int FRAGMENT_THONGTIN = 4;
+    private static final  int FRAGMENT_DOIMK = 5;
+    private static final  int FRAGMENT_GIOITHIEU = 6;
+    private static final  int FRAGMENT_GHICHU= 7;
+    private static final  int FRAGMENT_GOPY= 8;
+    private  int currenFragment = FRAGMENT_THONGKE;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,9 +67,21 @@ public class TrangChu extends AppCompatActivity implements NavigationView.OnNavi
         navigationView.setNavigationItemSelectedListener(this);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        //set data
+        //set profile
         setprofile();
 
+        //set action bottom
+        setBottomNavigationView();
+
+        replaceFragment(new NhaTro_Fragment());
+        navigationView.setCheckedItem(R.id.thongke);
+        setTitle("THỐNG KÊ THU CHI");
+        bottomNavigationView.getMenu().findItem(R.id.btnthongke).setChecked(true);
+
+    }
+
+    private void replaceFragment(Fragment fragment) {
+        getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, fragment).commit();
     }
 
     @Override
@@ -61,6 +90,7 @@ public class TrangChu extends AppCompatActivity implements NavigationView.OnNavi
         return true;
     }
 
+    //hàm set profile
     public void setprofile() {
         NavigationView navigationView = (NavigationView) findViewById(R.id.navigation_view);
         View headerView = navigationView.getHeaderView(0);
@@ -81,6 +111,49 @@ public class TrangChu extends AppCompatActivity implements NavigationView.OnNavi
         Picasso.get().load(photoUrl).into(avatar);
     }
 
+    //Chức năng bottom
+    public void setBottomNavigationView() {
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.btnthunhap:
+                        setTitle("DANH SÁCH Ở GHÉP");
+                        PhongGhep_Fragment khoanThu_fragment = new PhongGhep_Fragment();
+                        replaceFragment(khoanThu_fragment);
+                        navigationView.setCheckedItem(R.id.khoanthu);
+                        currenFragment = FRAGMENT_THU;
+                        break;
+
+                    case R.id.btnchitieu:
+                        setTitle("NHẮN TIN");
+                        NhanTin_Fragment khoanChi_fragment = new NhanTin_Fragment();
+                        replaceFragment(khoanChi_fragment);
+                        navigationView.setCheckedItem(R.id.khoanchi);
+                        currenFragment = FRAGMENT_CHI;
+                        break;
+
+                    case R.id.btnthongke:
+                        setTitle("DANH SÁCH NHÀ TRỌ");
+                        NhaTro_Fragment searchFragment = new NhaTro_Fragment();
+                        replaceFragment(searchFragment);
+                        navigationView.setCheckedItem(R.id.thongke);
+                        currenFragment = FRAGMENT_THONGKE;
+                        break;
+
+                    case R.id.btncaidat:
+                        setTitle("CÀI ĐẶT");
+                        Setting_Fragment ghiChu_fragment = new Setting_Fragment();
+                        replaceFragment(ghiChu_fragment);
+                        navigationView.setCheckedItem(R.id.ghichu);
+                        currenFragment = FRAGMENT_THONGKE;
+                        break;
+                }
+
+                return true;
+            }
+        });
+    }
 
     //chức năng menubar
     @Override
@@ -157,34 +230,33 @@ public class TrangChu extends AppCompatActivity implements NavigationView.OnNavi
         return super.onOptionsItemSelected(item);
     }
 
-
     public boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
 
         if (id == R.id.khoanthu) {
-//            if (FRAGMENT_THU != currenFragment) {
-//                setTitle("QUẢN LÝ THU NHẬP");
-//                replaceFragment(new KhoanThu_Fragment());
-//                bottomNavigationView.getMenu().findItem(R.id.btnthunhap).setChecked(true);
-//                currenFragment = FRAGMENT_THU;
-//            }
+            if (FRAGMENT_THU != currenFragment) {
+                setTitle("DANH SÁCH Ở GHÉP");
+                replaceFragment(new PhongGhep_Fragment());
+                bottomNavigationView.getMenu().findItem(R.id.btnthunhap).setChecked(true);
+                currenFragment = FRAGMENT_THU;
+            }
         } else if (id == R.id.khoanchi) {
-//            if (FRAGMENT_CHI != currenFragment) {
-//                setTitle("QUẢN LÝ CHI TIÊU");
-//                replaceFragment(new KhoanChi_Fragment());
-//                bottomNavigationView.getMenu().findItem(R.id.btnchitieu).setChecked(true);
-//                currenFragment = FRAGMENT_CHI;
-//
-//            }
+            if (FRAGMENT_CHI != currenFragment) {
+                setTitle("NHẮN TIN");
+                replaceFragment(new NhanTin_Fragment());
+                bottomNavigationView.getMenu().findItem(R.id.btnchitieu).setChecked(true);
+                currenFragment = FRAGMENT_CHI;
+
+            }
         }
         else if (id == R.id.thongke) {
-//            if (FRAGMENT_THONGKE != currenFragment) {
-//                setTitle("THỐNG KÊ THU CHI");
-//                replaceFragment(new ThongKe_Fragment());
-//                bottomNavigationView.getMenu().findItem(R.id.btnthongke).setChecked(true);
-//                currenFragment = FRAGMENT_THONGKE;
-//
-//            }
+            if (FRAGMENT_THONGKE != currenFragment) {
+                setTitle("DANH SÁCH NHÀ TRỌ");
+                replaceFragment(new NhaTro_Fragment());
+                bottomNavigationView.getMenu().findItem(R.id.btnthongke).setChecked(true);
+                currenFragment = FRAGMENT_THONGKE;
+
+            }
         }
         else if (id == R.id.gioithieu) {
             final ProgressDialog progressDialog = ProgressDialog.show(TrangChu.this,"Thông Báo","Đang tìm kiếm bản cập nhật...");
@@ -212,13 +284,13 @@ public class TrangChu extends AppCompatActivity implements NavigationView.OnNavi
 //            startActivity(introIntent);
         }
         else if (id == R.id.capnhat) {
-//            if (FRAGMENT_THONGTIN != currenFragment) {
-//                setTitle("THÔNG TIN NGƯỜI DÙNG");
-//                navigationView.setCheckedItem(R.id.capnhat);
+            if (FRAGMENT_THONGTIN != currenFragment) {
+                setTitle("THÔNG TIN NGƯỜI DÙNG");
+                navigationView.setCheckedItem(R.id.capnhat);
                 Intent introIntent = new Intent(TrangChu.this, UpdateProfile.class);
                 startActivity(introIntent);
-//                currenFragment = FRAGMENT_THONGTIN;
-//            }
+                currenFragment = FRAGMENT_THONGTIN;
+            }
         }
 
         else if (id == R.id.thongtin) {
@@ -276,14 +348,12 @@ public class TrangChu extends AppCompatActivity implements NavigationView.OnNavi
             aBuilder.show();
         }
         else if (id == R.id.ghichu) {
-//            if (FRAGMENT_GHICHU != currenFragment) {
-//                setTitle("GHI CHÚ THU CHI");
-//                Tab_GhiChu_Fragment ghiChu_fragment = new Tab_GhiChu_Fragment();
-//                replaceFragment(ghiChu_fragment);
-//                currenFragment = FRAGMENT_GHICHU;
-//                bottomNavigationView.getMenu().findItem(R.id.btncaidat).setChecked(true);
-//                currenFragment = FRAGMENT_GHICHU;
-//            }
+            if (FRAGMENT_GHICHU != currenFragment) {
+                setTitle("CÀI ĐẶT");
+                replaceFragment(new Setting_Fragment());
+                bottomNavigationView.getMenu().findItem(R.id.btncaidat).setChecked(true);
+                currenFragment = FRAGMENT_GHICHU;
+            }
         }
         else if (id == R.id.donggopykien) {
 //            if (FRAGMENT_GOPY != currenFragment) {
@@ -305,6 +375,7 @@ public class TrangChu extends AppCompatActivity implements NavigationView.OnNavi
         frameLayout = findViewById(R.id.frame_layout);
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.navigation_view);
+        bottomNavigationView = findViewById(R.id.bottomNavigation);
     }
 
 

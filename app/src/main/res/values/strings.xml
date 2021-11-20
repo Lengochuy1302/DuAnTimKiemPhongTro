@@ -21,5 +21,7 @@
     <string name="desc_two">Giúp bạn định vị được vị trí của nhà trọ một cách tiện lợi và nhanh chóng trên bản đồ.</string>
     <string name="desc_three">Cho phép người dùng có thể tìm được người ở ghép có cùng nhu cầu và sở thích.</string>
     <string name="desc_fourth">Bảo mật tuyệt đối thông tin cá nhân và quyền riêng tư của người dùng.</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
