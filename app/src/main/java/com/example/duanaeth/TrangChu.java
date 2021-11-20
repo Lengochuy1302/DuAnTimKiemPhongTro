@@ -24,6 +24,7 @@ import android.widget.Toast;
 
 import com.example.duanaeth.FirebaseAdapter.Device;
 import com.example.duanaeth.FragmentLayout.NhaTro_Fragment;
+import com.example.duanaeth.FragmentLayout.Tab_NhaTro_Fragment;
 import com.example.duanaeth.FragmentLayout.NhanTin_Fragment;
 import com.example.duanaeth.FragmentLayout.PhongGhep_Fragment;
 import com.example.duanaeth.FragmentLayout.Setting_Fragment;
@@ -75,7 +76,7 @@ public class TrangChu extends AppCompatActivity implements NavigationView.OnNavi
 
         replaceFragment(new NhaTro_Fragment());
         navigationView.setCheckedItem(R.id.thongke);
-        setTitle("THỐNG KÊ THU CHI");
+        setTitle("DANH SÁCH NHÀ TRỌ");
         bottomNavigationView.getMenu().findItem(R.id.btnthongke).setChecked(true);
 
     }
