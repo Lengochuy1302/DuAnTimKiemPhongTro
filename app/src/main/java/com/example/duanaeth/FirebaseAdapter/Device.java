@@ -1,4 +1,4 @@
-package com.example.duanaeth;
+package com.example.duanaeth.FirebaseAdapter;
 
 public class Device {
     private String ID, TenDevice;
