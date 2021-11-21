@@ -1,4 +1,4 @@
-package com.example.duanaeth.FirebaseAdapter;
+package com.example.duanaeth.LayoutChucNang;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -7,13 +7,13 @@ import android.provider.Telephony;
 import android.telephony.SmsMessage;
 import android.widget.EditText;
 
-public class OTP_Receiver extends BroadcastReceiver
+public class readOtpToSms extends BroadcastReceiver
 {
     private static EditText editText;
 
     public void setEditText(EditText editText)
     {
-        OTP_Receiver.editText = editText;
+        readOtpToSms.editText = editText;
     }
 
     @Override

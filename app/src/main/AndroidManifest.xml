@@ -48,7 +48,7 @@
             android:value="@string/google_maps_key" />
 
         <receiver
-            android:name=".FirebaseAdapter.OTP_Receiver"
+            android:name=".LayoutChucNang.readOtpToSms"
             android:permission="android.permission.BROADCAST_SMS">
             <intent-filter>
                 <action android:name="android.provider.Telephony.SMS_RECEIVED" />

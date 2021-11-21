@@ -1,4 +1,4 @@
-package com.example.duanaeth.FirebaseAdapter;
+package com.example.duanaeth.ArrayAdapter;
 
 public class Device {
     private String ID, TenDevice;

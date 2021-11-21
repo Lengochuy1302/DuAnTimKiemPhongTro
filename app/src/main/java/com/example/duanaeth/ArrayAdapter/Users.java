@@ -1,4 +1,4 @@
-package com.example.duanaeth.FirebaseAdapter;
+package com.example.duanaeth.ArrayAdapter;
 
 public class Users {
     private String userName, feedback, password, email, birthday, numberphone, linkhinhanh, gioitinh;
