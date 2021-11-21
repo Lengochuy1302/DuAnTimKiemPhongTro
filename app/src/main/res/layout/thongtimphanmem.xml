@@ -13,7 +13,7 @@
     <TextView
         android:id="@+id/textView3"
         android:layout_width="300dp"
-        android:layout_height="300dp"ại
+        android:layout_height="300dp"
         android:layout_marginStart="-150dp"
         android:layout_marginBottom="-150dp"
         android:background="@drawable/maunendangnhapdangky"
@@ -59,7 +59,7 @@
 
     <LinearLayout
         android:id="@+id/linearLayoutgioithieu"
-        android:layout_width="405dp"
+        android:layout_width="385dp"
         android:layout_height="539dp"
         android:layout_marginBottom="37dp"
         android:height="445dp"
@@ -69,9 +69,10 @@
         android:paddingStart="30dp"
         android:paddingEnd="30dp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logoapp"
-        app:layout_constraintVertical_bias="0.0"
-        tools:layout_editor_absoluteX="3dp">
+        app:layout_constraintVertical_bias="0.0">
 
 
         <TextView
