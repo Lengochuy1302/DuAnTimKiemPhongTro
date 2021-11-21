@@ -22,7 +22,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.duanaeth.FirebaseAdapter.Device;
+import com.example.duanaeth.ArrayAdapter.Device;
 import com.example.duanaeth.FragmentLayout.NhaTro.NhaTro_Fragment;
 import com.example.duanaeth.FragmentLayout.NhanTin.NhanTin_Fragment;
 import com.example.duanaeth.FragmentLayout.PhongGhep.PhongGhep_Fragment;

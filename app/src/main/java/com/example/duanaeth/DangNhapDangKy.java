@@ -17,7 +17,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.duanaeth.FirebaseAdapter.Device;
+import com.example.duanaeth.ArrayAdapter.Device;
 import com.example.duanaeth.LayoutChucNang.quenMatKhauActivity;
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;

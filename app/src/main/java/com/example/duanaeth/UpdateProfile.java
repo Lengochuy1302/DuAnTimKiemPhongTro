@@ -29,8 +29,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.duanaeth.FirebaseAdapter.OTP_Receiver;
-import com.example.duanaeth.FirebaseAdapter.Users;
+import com.example.duanaeth.LayoutChucNang.readOtpToSms;
+import com.example.duanaeth.ArrayAdapter.Users;
 import com.example.duanaeth.SplashScreen.IntroActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -429,7 +429,7 @@ public class UpdateProfile extends AppCompatActivity {
 
     private void doccode(){
         verysdt = (EditText) findViewById(R.id.nhapotp);
-        new OTP_Receiver().setEditText(verysdt);
+        new readOtpToSms().setEditText(verysdt);
     }
 
     //hàm onActivityResult set hình
