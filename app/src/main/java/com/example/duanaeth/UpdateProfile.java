@@ -528,17 +528,19 @@ public class UpdateProfile extends AppCompatActivity {
 
                 tilBirthday.setText(birthdayFromDB);
                 tilPhone.setText(phoneFromDB);
-                if (gioiTinhFromDB.equals("Nam")) {
+                if (gioiTinhFromDB == null) {
                     vitri = 0;
                 } else if (gioiTinhFromDB.equals("Nữ")) {
                     vitri = 1;
                 } else if (gioiTinhFromDB.equals("Khác")) {
-                    vitri = 3;
+                    vitri = 2;
+                } else  if (gioiTinhFromDB.equals("Nam")){
+                    vitri = 0;
                 }
                 arrayAdapter = new ArrayAdapter<String>(UpdateProfile.this, android.R.layout.simple_list_item_1, gioitinh);
                 gioiTinh.setText(gioiTinhFromDB);
                 gioiTinh.setAdapter(arrayAdapter);
-                item = String.valueOf(arrayAdapter.getItem(1));
+                item = String.valueOf(arrayAdapter.getItem(vitri));
 
 
 

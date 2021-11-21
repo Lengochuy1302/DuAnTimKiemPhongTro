@@ -185,9 +185,6 @@ public class DangNhapDangKy extends AppCompatActivity {
                         @Override
                         public void onSuccess(LoginResult loginResult) {
                             pDialog.dismiss();
-
-
-                            Toast.makeText(DangNhapDangKy.this, "Dang nhap thanh cong" + loginResult.getAccessToken(), Toast.LENGTH_SHORT).show();
                             handleFacebookAccessToken(loginResult.getAccessToken());
                             Intent introIntent = new Intent(DangNhapDangKy.this, UpdateProfile.class);
                             startActivity(introIntent);
