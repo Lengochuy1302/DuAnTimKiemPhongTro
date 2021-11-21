@@ -84,8 +84,8 @@ public class UpdateProfile extends AppCompatActivity {
     Calendar calendar = Calendar.getInstance();
     StorageReference mountainsRef = storageRef.child("image"+ calendar.getTimeInMillis() +".png");
     AutoCompleteTextView gioiTinh;
-    ArrayAdapter<String> arrayAdapter;
-    String gioitinh[] = {"Nam", "Nữ", "Khác"};
+    private ArrayAdapter<String> arrayAdapter;
+    private String gioitinh[] = {"Nam", "Nữ", "Khác"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -157,7 +157,6 @@ public class UpdateProfile extends AppCompatActivity {
             Calendar calendar = Calendar.getInstance();
             String txtGioiTinh = item.trim();
             String currentDate = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date());
-            Toast.makeText(UpdateProfile.this, ""+currentDate,Toast.LENGTH_SHORT).show();
 
             Boolean checkError = true;
             if(tilHoTen.getText().toString().trim().isEmpty()){
@@ -524,10 +523,24 @@ public class UpdateProfile extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 String birthdayFromDB = dataSnapshot.child("birthday").getValue(String.class);
                 String phoneFromDB = dataSnapshot.child("numberphone").getValue(String.class);
-//                String gioiTinhFromDB = dataSnapshot.child("gioitinh").getValue(String.class);
+                String gioiTinhFromDB = dataSnapshot.child("gioitinh").getValue(String.class);
+                int vitri = 0;
 
                 tilBirthday.setText(birthdayFromDB);
                 tilPhone.setText(phoneFromDB);
+                if (gioiTinhFromDB.equals("Nam")) {
+                    vitri = 0;
+                } else if (gioiTinhFromDB.equals("Nữ")) {
+                    vitri = 1;
+                } else if (gioiTinhFromDB.equals("Khác")) {
+                    vitri = 3;
+                }
+                arrayAdapter = new ArrayAdapter<String>(UpdateProfile.this, android.R.layout.simple_list_item_1, gioitinh);
+                gioiTinh.setText(gioiTinhFromDB);
+                gioiTinh.setAdapter(arrayAdapter);
+                item = String.valueOf(arrayAdapter.getItem(1));
+
+
 
             }
             @Override
