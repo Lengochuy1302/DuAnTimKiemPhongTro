@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FragmentLayout.NhanTin.Nhantin_Activity"
+    android:orientation="vertical">
+
+    <androidx.recyclerview.widget.RecyclerView
+
+        android:id="@+id/tinNhan"
+        android:layout_width="match_parent"
+        android:layout_height="600dp">
+
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <LinearLayout
+        android:background="@color/blue"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:id="@+id/goiYChat"
+                    android:background="@color/red"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp">
+
+                    <Button
+                        android:id="@+id/goiY1"
+                        android:text="Phòng này còn không ạ "
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp">
+                    </Button>
+                    <Button
+                        android:layout_marginLeft="20dp"
+                        android:id="@+id/goiY2"
+                        android:text="Cảm ơn nhưng tôi không "
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp">
+                    </Button>
+                </LinearLayout>
+            </HorizontalScrollView>
+
+
+        <LinearLayout
+            android:id="@+id/khungtinNhan"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="80dp">
+            <ImageView
+                android:layout_marginTop="20dp"
+                android:padding="10dp"
+                android:src="@drawable/ic_baseline_image_24"
+                android:id="@+id/nhanTinHinhAnh"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+            </ImageView>
+            <ImageView
+                android:layout_marginTop="20dp"
+                android:padding="10dp"
+                android:src="@drawable/ic_baseline_mic_24"
+                android:id="@+id/nhanTinGiongnoi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+            </ImageView>
+            <EditText
+                android:hint="Nhấn vào đây để chat"
+                android:id="@+id/edtNhantin"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </EditText>
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+</LinearLayout>
