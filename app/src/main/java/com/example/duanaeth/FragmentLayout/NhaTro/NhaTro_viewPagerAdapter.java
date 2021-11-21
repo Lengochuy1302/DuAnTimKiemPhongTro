@@ -1,11 +1,9 @@
-package com.example.duanaeth.FragmentLayout;
+package com.example.duanaeth.FragmentLayout.NhaTro;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
-
-import com.example.duanaeth.Tab_MapsFragment;
 
 
 public class NhaTro_viewPagerAdapter extends FragmentStatePagerAdapter {

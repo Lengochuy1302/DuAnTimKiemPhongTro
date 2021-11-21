@@ -19,6 +19,7 @@
         <entry key="..\:/BaiTapDuAn/app/src/main/res/layout/fragment_tab__maps.xml" value="0.25052083333333336" />
         <entry key="..\:/BaiTapDuAn/app/src/main/res/layout/layout_thongtin.xml" value="0.2212962962962963" />
         <entry key="..\:/BaiTapDuAn/app/src/main/res/layout/on_broading_screen.xml" value="0.246875" />
+        <entry key="..\:/BaiTapDuAn/app/src/main/res/layout/thongtimphanmem.xml" value="0.25052083333333336" />
         <entry key="..\:/BaiTapDuAn/app/src/main/res/layout/update_profile.xml" value="0.2" />
         <entry key="..\:/BaiTapDuAn/app/src/main/res/menu/bottom_navigation.xml" value="0.25052083333333336" />
         <entry key="..\:/BaiTapDuAn/app/src/main/res/menu/drawer_menu.xml" value="0.13020833333333334" />
@@ -40,15 +41,6 @@
         <entry key="..\:/DuAnTimKiemPhongTro_1/app/src/main/res/layout/slider_layout.xml" value="0.13020833333333334" />
         <entry key="..\:/DuAnTimKiemPhongTro_1/app/src/main/res/layout/update_profile.xml" value="0.1598731884057971" />
         <entry key="..\:/Users/nguye/AndroidStudioProjects/DuAnTimKiemPhongTro/app/src/main/res/layout/activity_main.xml" value="0.10144927536231885" />
-        <entry key="..\:/duanphongtro/app/src/main/res/layout/activity_doi_mat_khau.xml" value="0.1" />
-        <entry key="..\:/duanphongtro/app/src/main/res/layout/activity_intro.xml" value="0.17552083333333332" />
-        <entry key="..\:/duanphongtro/app/src/main/res/layout/activity_quen_mat_khau.xml" value="0.17552083333333332" />
-        <entry key="..\:/duanphongtro/app/src/main/res/layout/activity_trang_chu.xml" value="0.16983695652173914" />
-        <entry key="..\:/duanphongtro/app/src/main/res/layout/dang_nhap_dang_ky.xml" value="0.17552083333333332" />
-        <entry key="..\:/duanphongtro/app/src/main/res/layout/thongtimphanmem.xml" value="0.3333333333333333" />
-        <entry key="..\:/duanphongtro/app/src/main/res/menu/bottom_navigation.xml" value="0.17552083333333332" />
-        <entry key="..\:/duanphongtro/app/src/main/res/menu/drawer_menu.xml" value="0.17552083333333332" />
-        <entry key="..\:/duanphongtro/app/src/main/res/menu/toolbar_search.xml" value="0.17552083333333332" />
       </map>
     </option>
   </component>

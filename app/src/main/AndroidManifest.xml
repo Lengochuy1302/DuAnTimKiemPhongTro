@@ -86,6 +86,15 @@
             android:name=".UpdateProfile"
             android:exported="false" />
         <activity
+            android:name=".LayoutChucNang.thongTinApp"
+            android:exported="false" />
+        <activity
+            android:name=".LayoutChucNang.doiMatKhauActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LayoutChucNang.quenMatKhauActivity"
+            android:exported="false" />
+        <activity
             android:name=".SplashScreen.onBroadingSrceen"
             android:exported="false" />
         <activity

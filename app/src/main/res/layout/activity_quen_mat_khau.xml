@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#81E4E4E4"
-    tools:context=".quenMatKhauActivity">
+    tools:context=".LayoutChucNang.quenMatKhauActivity">
 
     <TextView
         android:id="@+id/textView"

@@ -23,11 +23,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.duanaeth.FirebaseAdapter.Device;
-import com.example.duanaeth.FragmentLayout.NhaTro_Fragment;
-import com.example.duanaeth.FragmentLayout.Tab_NhaTro_Fragment;
-import com.example.duanaeth.FragmentLayout.NhanTin_Fragment;
-import com.example.duanaeth.FragmentLayout.PhongGhep_Fragment;
-import com.example.duanaeth.FragmentLayout.Setting_Fragment;
+import com.example.duanaeth.FragmentLayout.NhaTro.NhaTro_Fragment;
+import com.example.duanaeth.FragmentLayout.NhanTin.NhanTin_Fragment;
+import com.example.duanaeth.FragmentLayout.PhongGhep.PhongGhep_Fragment;
+import com.example.duanaeth.FragmentLayout.Setting.Setting_Fragment;
+import com.example.duanaeth.LayoutChucNang.doiMatKhauActivity;
+import com.example.duanaeth.LayoutChucNang.thongTinApp;
 import com.example.duanaeth.SplashScreen.IntroActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
@@ -272,17 +273,17 @@ public class TrangChu extends AppCompatActivity implements NavigationView.OnNavi
 
         }
         else if (id == R.id.doimatkhau) {
-//            if (FRAGMENT_DOIMK != currenFragment) {
-//                setTitle("ĐỔI MẬT KHẨU");
-//                Intent introIntent = new Intent(MainActivity.this, doimk.class);
-//                startActivity(introIntent);
-//                currenFragment = FRAGMENT_DOIMK;
-//            }
+            if (FRAGMENT_DOIMK != currenFragment) {
+                setTitle("ĐỔI MẬT KHẨU");
+                Intent introIntent = new Intent(TrangChu.this, doiMatKhauActivity.class);
+                startActivity(introIntent);
+                currenFragment = FRAGMENT_DOIMK;
+            }
         }
         else if (id == R.id.intro) {
-//            setTitle("GIỚI THIỆU");
-//            Intent introIntent = new Intent(MainActivity.this, gioithieu.class);
-//            startActivity(introIntent);
+            setTitle("GIỚI THIỆU");
+            Intent introIntent = new Intent(TrangChu.this, thongTinApp.class);
+            startActivity(introIntent);
         }
         else if (id == R.id.capnhat) {
             if (FRAGMENT_THONGTIN != currenFragment) {

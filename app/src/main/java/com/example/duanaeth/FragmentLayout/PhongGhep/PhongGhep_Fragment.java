@@ -1,4 +1,4 @@
-package com.example.duanaeth.FragmentLayout;
+package com.example.duanaeth.FragmentLayout.PhongGhep;
 
 import android.os.Bundle;
 

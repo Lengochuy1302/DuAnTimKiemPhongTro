@@ -1,10 +1,12 @@
-package com.example.duanaeth;
+package com.example.duanaeth.LayoutChucNang;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class thongtinphanmem extends AppCompatActivity {
+import com.example.duanaeth.R;
+
+public class thongTinApp extends AppCompatActivity {
      //thêm thông tin appp
     @Override
     protected void onCreate(Bundle savedInstanceState) {

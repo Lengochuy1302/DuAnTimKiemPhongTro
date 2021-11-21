@@ -1,4 +1,4 @@
-package com.example.duanaeth.FragmentLayout;
+package com.example.duanaeth.FragmentLayout.NhaTro;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

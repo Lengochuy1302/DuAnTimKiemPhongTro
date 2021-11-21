@@ -18,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.duanaeth.FirebaseAdapter.Device;
+import com.example.duanaeth.LayoutChucNang.quenMatKhauActivity;
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
@@ -46,8 +47,8 @@ import java.util.regex.Pattern;
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class DangNhapDangKy extends AppCompatActivity {
-    private static final int RC_SIGN_IN = 123;
-    TextView btnDangNhap, btnDangKy;
+
+    TextView btnDangNhap, btnDangKy, btnQuenMK, logo;
     ImageView btnEmailDK, btnQuayLai, btnFacebook, btnFacebook1, btnGoogle, btnGoogle1;
     EditText edtEmailDN, edtEmailDK, edtMatKhauDN, edtMatKhauDK, edtMatKhauDKLai;
     LinearLayout linearLayoutDangKy, linearLayoutDangNhap;
@@ -59,8 +60,8 @@ public class DangNhapDangKy extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private CallbackManager fbCallbackManager;
     private Animation zoom_out,slidedown, slideup;
-    private TextView logo;
     private GoogleSignInClient mGoogleSignInClient;
+    private static final int RC_SIGN_IN = 123;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -149,9 +150,24 @@ public class DangNhapDangKy extends AppCompatActivity {
                 signIn();
             }
         });
+
+        //quên mk
+        btnQuenMK.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClickQuenMK();
+            }
+        });
+
     }
 
 
+    //hàm quên mk
+    public void onClickQuenMK() {
+        Intent introIntent = new Intent(DangNhapDangKy.this, quenMatKhauActivity.class);
+        startActivity(introIntent);
+        finishAffinity();
+    }
 
 
     //hàm login facebook
@@ -464,5 +480,6 @@ public class DangNhapDangKy extends AppCompatActivity {
         btnGoogle1 = findViewById(R.id.btnLoginGoogle1);
         btnFacebook1 = findViewById(R.id.btnLoginFacebook1);
         logo = findViewById(R.id.logoapp);
+        btnQuenMK = findViewById(R.id.btnQuenMK);
     }
 }
