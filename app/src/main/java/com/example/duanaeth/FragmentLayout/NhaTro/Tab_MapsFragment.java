@@ -35,6 +35,10 @@ public class Tab_MapsFragment extends Fragment {
             LatLng sydney = new LatLng(21.030653, 	105.847130);
             googleMap.addMarker(new MarkerOptions().position(sydney).title("Nhà trọ AETH HOUSE"));
             googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+
+            LatLng sydney2 = new LatLng(12.709979, 	108.074630);
+            googleMap.addMarker(new MarkerOptions().position(sydney2).title("Nhà trọ 2"));
+            googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney2));
         }
     };
 

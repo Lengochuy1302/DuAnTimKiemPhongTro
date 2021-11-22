@@ -56,6 +56,9 @@ dependencies {
     implementation 'de.hdodenhof:circleimageview:3.1.0'
     implementation 'com.android.support:design:29.1.0'
     implementation 'com.squareup.picasso:picasso:2.71828'
-
+    implementation 'gun0912.ted:tedbottompicker:2.0.1'
+    implementation "androidx.recyclerview:recyclerview:1.2.1"
+    implementation "androidx.cardview:cardview:1.0.0"
+    implementation 'com.github.clans:fab:1.6.4'
 }
 apply plugin: 'com.google.gms.google-services'
