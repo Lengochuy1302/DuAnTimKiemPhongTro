@@ -58,3 +58,16 @@ Ngày nay đời sống của người dân tăng cao, nhiều người rời kh
  |  9 | Giao diện giới thiệu App |
  | 10 | Thêm các fragment quan trọng |
  | 11 | Thêm chức năng map và viewpager |
+ | 12 |
+ | 13 |
+ | 14 |
+ | 15 |
+ | 16 |
+ | 17 |
+ | 18 |
+ | 19 |
+ | 20 |
+ | 21 |
+ 
+ 
+ 
