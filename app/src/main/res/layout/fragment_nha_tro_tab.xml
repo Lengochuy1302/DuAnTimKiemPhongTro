@@ -15,13 +15,12 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <androidx.recyclerview.widget.RecyclerView
+            <GridView
                 android:id="@+id/rcv_LoaiChi"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:paddingLeft="30dp"
                 android:paddingTop="10dp"
-                android:paddingRight="30dp" />
+                />
 
             <com.github.clans.fab.FloatingActionMenu
                 android:id="@+id/material_design_android_floating_action_menu"
@@ -61,7 +60,7 @@
                     android:layout_height="wrap_content"
                     android:src="@drawable/fab_add"
                     app:fab_colorNormal="#FF9800"
-                    fab:fab_label="Thêm loại chi tiêu"
+                    fab:fab_label="Thêm nhà trọ"
                     fab:fab_size="mini" />
             </com.github.clans.fab.FloatingActionMenu>
 

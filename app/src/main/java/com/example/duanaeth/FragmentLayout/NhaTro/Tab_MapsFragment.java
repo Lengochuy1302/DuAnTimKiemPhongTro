@@ -39,6 +39,18 @@ public class Tab_MapsFragment extends Fragment {
             LatLng sydney2 = new LatLng(12.709979, 	108.074630);
             googleMap.addMarker(new MarkerOptions().position(sydney2).title("Nhà trọ 2"));
             googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney2));
+
+            LatLng sydney3 = new LatLng(18.709979, 	108.074430);
+            googleMap.addMarker(new MarkerOptions().position(sydney3).title("Nhà trọ 3"));
+            googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney3));
+
+            LatLng sydney5 = new LatLng(13.709979, 	109.074630);
+            googleMap.addMarker(new MarkerOptions().position(sydney5).title("Nhà trọ 4"));
+            googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney5));
+
+            LatLng sydney4 = new LatLng(16.709979, 	107.074630);
+            googleMap.addMarker(new MarkerOptions().position(sydney4).title("Nhà trọ 5"));
+            googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney4));
         }
     };
 
