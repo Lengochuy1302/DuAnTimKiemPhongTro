@@ -3,12 +3,22 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-android:layout_margin="10dp"
+    android:layout_margin="10dp"
     app:cardCornerRadius="6dp">
     <ImageView
         android:id="@+id/img_photo"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:scaleType="centerCrop"/>
-
+    <TextView
+        android:id="@+id/delete"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginStart="3dp"
+        android:background="@drawable/backgroundcsc"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:textSize="10dp"
+        android:text="X" />
 </androidx.cardview.widget.CardView>

@@ -9,8 +9,11 @@ import android.Manifest;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import com.example.duanaeth.ArrayAdapter.PhotoAdapter;
 import com.example.duanaeth.R;
@@ -37,7 +40,8 @@ import gun0912.tedbottompicker.TedBottomSheetDialogFragment;
 
 public class ThemNhaTro extends AppCompatActivity {
     private static final int MAX_LENGTH = 10 ;
-    private ImageView btnImg, btnClean;
+    public ImageView btnImg;
+    private TextView btnClean;
     private RecyclerView rcvPhoto;
     private PhotoAdapter photoAdapter;
     private DatabaseReference reference;

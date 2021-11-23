@@ -17,8 +17,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/tablayout_khoanthu"
             android:background="#DCFFFFFF"
-            app:tabTextColor="#3E4467"
-            app:tabIndicatorColor="#3E4467"
+            app:tabTextColor="@color/teal_700"
+            app:tabIndicatorColor="@color/teal_700"
             android:minHeight="?attr/actionBarSize"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 

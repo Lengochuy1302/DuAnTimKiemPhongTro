@@ -8,10 +8,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.duanaeth.LayoutChucNang.ThemNhaTro;
 import com.example.duanaeth.R;
 
 import java.io.IOException;
@@ -40,6 +43,14 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.PhotoViewHol
     @Override
     public void onBindViewHolder(@NonNull PhotoViewHolder holder, int position) {
         Uri uri = mListPhoto.get(position);
+        holder.deleteimg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mListPhoto.remove(position);
+                notifyDataSetChanged();
+            }
+        });
+
         if (uri == null) {
             return;
         }
@@ -53,6 +64,8 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.PhotoViewHol
             e.printStackTrace();
         }
 
+
+
     }
 
     @Override
@@ -65,10 +78,12 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.PhotoViewHol
 
     public class PhotoViewHolder extends RecyclerView.ViewHolder {
         private ImageView imgPhoto;
+        private TextView deleteimg;
 
         public PhotoViewHolder(@NonNull View itemView) {
             super(itemView);
             imgPhoto = itemView.findViewById(R.id.img_photo);
+            deleteimg = itemView.findViewById(R.id.delete);
         }
     }
 }
