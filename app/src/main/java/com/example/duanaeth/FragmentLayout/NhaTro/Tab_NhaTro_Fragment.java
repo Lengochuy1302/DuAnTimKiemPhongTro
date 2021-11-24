@@ -58,38 +58,68 @@ public class Tab_NhaTro_Fragment extends Fragment {
         itemmenu.put("giatien", "700.000 VND");
         itemmenu.put("diachi", "100 Ngô Gia Tự, Tân An, Tp. Buôn Ma Thuột, Đắk Lắk");
         dsmenu.add(itemmenu);
-
+        itemmenu= new HashMap<String, Object>();
         itemmenu.put("ten", "Phòng Trọ Phong Nhi 2");
         itemmenu.put("hinh", R.drawable.hinh4);
         itemmenu.put("giatien", "1.500.000 VND");
         itemmenu.put("diachi", "100 Ngô Gia Tự, Tân An, Tp. Buôn Ma Thuột, Đắk Lắk");
         dsmenu.add(itemmenu);
-
+        itemmenu= new HashMap<String, Object>();
         itemmenu.put("ten", "Phòng Trọ Phong Nhi 3");
         itemmenu.put("hinh", R.drawable.hinh2);
         itemmenu.put("giatien", "500.000 VND");
         itemmenu.put("diachi", "100 Ngô Gia Tự, Tân An, Tp. Buôn Ma Thuột, Đắk Lắk");
         dsmenu.add(itemmenu);
-
+        itemmenu= new HashMap<String, Object>();
         itemmenu.put("ten", "Phòng Trọ Phong Nhi 4");
         itemmenu.put("hinh", R.drawable.hinh3);
         itemmenu.put("giatien", "2.100.000 VND");
         itemmenu.put("diachi", "100 Ngô Gia Tự, Tân An, Tp. Buôn Ma Thuột, Đắk Lắk");
         dsmenu.add(itemmenu);
-
+        itemmenu= new HashMap<String, Object>();
         itemmenu.put("ten", "Phòng Trọ Phong Nhi 5");
         itemmenu.put("hinh", R.drawable.hinh1);
         itemmenu.put("giatien", "1.000.000 VND");
         itemmenu.put("diachi", "100 Ngô Gia Tự, Tân An, Tp. Buôn Ma Thuột, Đắk Lắk");
         dsmenu.add(itemmenu);
-
+        itemmenu= new HashMap<String, Object>();
         itemmenu.put("ten", "Phòng Trọ Phong Nhi 6");
         itemmenu.put("hinh", R.drawable.hinh2);
         itemmenu.put("giatien", "1.200.000 VND");
         itemmenu.put("diachi", "100 Ngô Gia Tự, Tân An, Tp. Buôn Ma Thuột, Đắk Lắk");
         dsmenu.add(itemmenu);
-
+        itemmenu= new HashMap<String, Object>();
         itemmenu.put("ten", "Phòng Trọ Phong Nhi 7");
+        itemmenu.put("hinh", R.drawable.hinh4);
+        itemmenu.put("giatien", "900.000 VND");
+        itemmenu.put("diachi", "100 Ngô Gia Tự, Tân An, Tp. Buôn Ma Thuột, Đắk Lắk");
+        dsmenu.add(itemmenu);
+        itemmenu= new HashMap<String, Object>();
+        itemmenu.put("ten", "Phòng Trọ Phong Nhi 8");
+        itemmenu.put("hinh", R.drawable.hinh2);
+        itemmenu.put("giatien", "900.000 VND");
+        itemmenu.put("diachi", "100 Ngô Gia Tự, Tân An, Tp. Buôn Ma Thuột, Đắk Lắk");
+        dsmenu.add(itemmenu);
+        itemmenu= new HashMap<String, Object>();
+        itemmenu.put("ten", "Phòng Trọ Phong Nhi 9");
+        itemmenu.put("hinh", R.drawable.hinh1);
+        itemmenu.put("giatien", "900.000 VND");
+        itemmenu.put("diachi", "100 Ngô Gia Tự, Tân An, Tp. Buôn Ma Thuột, Đắk Lắk");
+        dsmenu.add(itemmenu);
+        itemmenu= new HashMap<String, Object>();
+        itemmenu.put("ten", "Phòng Trọ Phong Nhi 10");
+        itemmenu.put("hinh", R.drawable.hinh3);
+        itemmenu.put("giatien", "900.000 VND");
+        itemmenu.put("diachi", "100 Ngô Gia Tự, Tân An, Tp. Buôn Ma Thuột, Đắk Lắk");
+        dsmenu.add(itemmenu);
+        itemmenu= new HashMap<String, Object>();
+        itemmenu.put("ten", "Phòng Trọ Phong Nhi 11");
+        itemmenu.put("hinh", R.drawable.hinh1);
+        itemmenu.put("giatien", "900.000 VND");
+        itemmenu.put("diachi", "100 Ngô Gia Tự, Tân An, Tp. Buôn Ma Thuột, Đắk Lắk");
+        dsmenu.add(itemmenu);
+        itemmenu= new HashMap<String, Object>();
+        itemmenu.put("ten", "Phòng Trọ Phong Nhi 12");
         itemmenu.put("hinh", R.drawable.hinh4);
         itemmenu.put("giatien", "900.000 VND");
         itemmenu.put("diachi", "100 Ngô Gia Tự, Tân An, Tp. Buôn Ma Thuột, Đắk Lắk");
@@ -99,9 +129,6 @@ public class Tab_NhaTro_Fragment extends Fragment {
         int[]to ={R.id.tenmenu, R.id.hinhmenu, R.id.giatien, R.id.diachi};
         SimpleAdapter myadapter = new SimpleAdapter(getContext(), dsmenu, R.layout.itemsanpham, from, to);
         rcv.setAdapter(myadapter);
-
-
-
 
         return view;
     }

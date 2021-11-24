@@ -28,6 +28,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:id="@+id/btnHuy"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
@@ -70,11 +71,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="19dp"
-                android:text="Xóa hết / Chỉnh sửa"
+                android:text="Xóa hết"
                 android:textColor="@color/red"
                 android:textSize="15dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/btnSelectImg"
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                app:layout_constraintBottom_toBottomOf="@+id/line"
+                app:layout_constraintEnd_toEndOf="@+id/line"
+                app:layout_constraintStart_toStartOf="@+id/line"
+                app:layout_constraintTop_toTopOf="@+id/line"
+                app:srcCompat="@drawable/addimg" />
 
             <LinearLayout
                 android:id="@+id/line"
@@ -91,6 +102,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView0">
 
                 <androidx.recyclerview.widget.RecyclerView
+                    android:background="#FFFFFF"
                     android:id="@+id/rcv_img"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -100,15 +112,7 @@
 
 
 
-            <ImageView
-                android:id="@+id/btnSelectImg"
-                android:layout_width="170dp"
-                android:layout_height="170dp"
-                app:layout_constraintBottom_toBottomOf="@+id/line"
-                app:layout_constraintEnd_toEndOf="@+id/line"
-                app:layout_constraintStart_toStartOf="@+id/line"
-                app:layout_constraintTop_toTopOf="@+id/line"
-                app:srcCompat="@drawable/addimg" />
+
 
 
             <TextView

@@ -38,6 +38,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
+
 public class TrangChu extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     public String linkRealTime;
     private DrawerLayout drawerLayout;
@@ -62,6 +64,9 @@ public class TrangChu extends AppCompatActivity implements NavigationView.OnNavi
         setContentView(R.layout.activity_trang_chu);
         //anh xạ
         anhxa();
+
+        //ẩn toolBar
+        getSupportActionBar().hide();
 
         toggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close);
         drawerLayout.addDrawerListener(toggle);
@@ -367,6 +372,32 @@ public class TrangChu extends AppCompatActivity implements NavigationView.OnNavi
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        new SweetAlertDialog(TrangChu.this, SweetAlertDialog.NORMAL_TYPE)
+                .setTitleText("Thông báo")
+                .setContentText("Bạn thật sự muốn thoát? Hãy nhấn đồng ý để thoát!")
+                .setCancelText("Hủy")
+                .setConfirmText("Đồng ý")
+                .showCancelButton(true)
+                .setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                    @Override
+                    public void onClick(SweetAlertDialog sDialog) {
+                        sDialog.cancel();
+                    }
+                })
+                .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                    @Override
+                    public void onClick(SweetAlertDialog sDialog) {
+                        Intent homeIntent = new Intent(Intent.ACTION_MAIN);
+                        homeIntent.addCategory( Intent.CATEGORY_HOME );
+                        homeIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(homeIntent);
+                    }
+                })
+                .show();
     }
 
 

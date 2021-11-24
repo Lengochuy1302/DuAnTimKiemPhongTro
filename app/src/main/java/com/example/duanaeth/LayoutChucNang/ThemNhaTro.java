@@ -1,13 +1,17 @@
 package com.example.duanaeth.LayoutChucNang;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.Manifest;
+import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
@@ -16,11 +20,17 @@ import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import com.example.duanaeth.ArrayAdapter.PhotoAdapter;
+import com.example.duanaeth.DangNhapDangKy;
 import com.example.duanaeth.R;
+import com.example.duanaeth.SplashScreen.IntroActivity;
 import com.example.duanaeth.SplashScreen.onBroadingSrceen;
+import com.example.duanaeth.TrangChu;
+import com.example.duanaeth.UpdateProfile;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -35,13 +45,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
 import gun0912.tedbottompicker.TedBottomPicker;
 import gun0912.tedbottompicker.TedBottomSheetDialogFragment;
 
 public class ThemNhaTro extends AppCompatActivity {
     private static final int MAX_LENGTH = 10 ;
     public ImageView btnImg;
-    private TextView btnClean;
+    private TextView btnClean, btnHuy;
     private RecyclerView rcvPhoto;
     private PhotoAdapter photoAdapter;
     private DatabaseReference reference;
@@ -55,27 +66,23 @@ public class ThemNhaTro extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_them_nha_tro);
 
+        //ánh xạ
+        anhXa();
+
         //ẩn toolBar
         getSupportActionBar().hide();
 
-        databaseReference = FirebaseDatabase.getInstance().getReference().child("User_one");
-        btnImg = findViewById(R.id.btnSelectImg);
-        btnClean = findViewById(R.id.btnCleanImg);
-        rcvPhoto = findViewById(R.id.rcv_img);
+        //set ảnh vào rcv
+        setImgRcv();
 
-        rcvPhoto.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                pemission();
-            }
-        });
+        //các event click
+        eventClick();
 
-        photoAdapter = new PhotoAdapter(ThemNhaTro.this);
+    }
 
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 3);
-        rcvPhoto.setLayoutManager(gridLayoutManager);
-        rcvPhoto.setAdapter(photoAdapter);
-
+    // hàm các event click
+    public void eventClick() {
+        // click chọn ảnh
         btnImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -83,16 +90,53 @@ public class ThemNhaTro extends AppCompatActivity {
             }
         });
 
+        //click xóa ảnh
         btnClean.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            photoAdapter.setDataPhoto(null);
+                photoAdapter.setDataPhoto(null);
                 btnImg.setVisibility(View.VISIBLE);
                 btnClean.setVisibility(View.GONE);
             }
         });
+
+        //click hủy
+
+        btnHuy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                new SweetAlertDialog(ThemNhaTro.this, SweetAlertDialog.WARNING_TYPE)
+                        .setTitleText("Bạn muốn thoát?")
+                        .setContentText("Lưu ý: Sau khi bạn thoát mọi dữ liệu bạn vừa nhập sẽ bị xóa! Bạn chắc chắn chứ?")
+                        .setCancelText("Hủy")
+                        .setConfirmText("Đồng ý")
+                        .showCancelButton(true)
+                        .setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sDialog) {
+                                sDialog.cancel();
+                            }
+                        })
+                        .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sDialog) {
+                                Intent introIntent = new Intent(ThemNhaTro.this, TrangChu.class);
+                                startActivity(introIntent);
+                                finishAffinity();
+                            }
+                        })
+                        .show();
+
+
+
+
+            }
+        });
     }
 
+    //hàm lấy ảnh
     private void SendLink(String url) {
         HashMap<String, String> hashMap = new HashMap<>();
         hashMap.put("link", url);
@@ -143,7 +187,7 @@ public class ThemNhaTro extends AppCompatActivity {
                     public void onImagesSelected(List<Uri> uriList) {
                         // here is selected image uri list
                         if (uriList != null && !uriList.isEmpty()) {
-                            btnImg.setVisibility(View.GONE);
+//                            btnImg.setVisibility(View.GONE);
                             btnClean.setVisibility(View.VISIBLE);
                             photoAdapter.setDataPhoto(uriList);
                             final StorageReference ImageFolder =  FirebaseStorage.getInstance("gs://thodf-8e9db.appspot.com").getReference();
@@ -177,5 +221,26 @@ public class ThemNhaTro extends AppCompatActivity {
 
 
 
+    }
+
+    //hàm set ảnh vào rcv
+    public void setImgRcv() {
+        photoAdapter = new PhotoAdapter(ThemNhaTro.this);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 3);
+        rcvPhoto.setLayoutManager(gridLayoutManager);
+        rcvPhoto.setAdapter(photoAdapter);
+    }
+
+    //hàm thêm nhà trọ
+    public void setThemNhaTro() {
+
+    }
+
+    //ánh xạ
+    public void  anhXa() {
+        btnImg = findViewById(R.id.btnSelectImg);
+        btnClean = findViewById(R.id.btnCleanImg);
+        rcvPhoto = findViewById(R.id.rcv_img);
+        btnHuy = findViewById(R.id.btnHuy);
     }
 }
