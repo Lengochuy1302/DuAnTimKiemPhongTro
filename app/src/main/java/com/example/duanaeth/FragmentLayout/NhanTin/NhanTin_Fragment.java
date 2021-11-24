@@ -7,60 +7,70 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.GridView;
+import android.widget.SimpleAdapter;
 
 import com.example.duanaeth.R;
+import com.github.clans.fab.FloatingActionButton;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link NhanTin_Fragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
 public class NhanTin_Fragment extends Fragment {
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public NhanTin_Fragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment NhanTin_Fragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static NhanTin_Fragment newInstance(String param1, String param2) {
-        NhanTin_Fragment fragment = new NhanTin_Fragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
+    View view;
+    GridView rcv;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_nhan_tin_, container, false);
+        view = inflater.inflate(R.layout.fragment_nhan_tin_, container, false);
+
+        rcv = view.findViewById(R.id.danhsachtinnhan);
+
+
+        List<HashMap<String,Object>> dsmenu = new ArrayList<HashMap<String,Object>>();
+        HashMap<String, Object> itemmenu = new HashMap<>();
+
+        itemmenu.put("ten", "Gia Lâm");
+        itemmenu.put("hinh", R.drawable.hinh3);
+        itemmenu.put("giatien", "16:45");
+        itemmenu.put("diachi", "Xin chào!!");
+        dsmenu.add(itemmenu);
+
+        itemmenu= new HashMap<String, Object>();
+        itemmenu.put("ten", "Lê Thùy Linh");
+        itemmenu.put("hinh", R.drawable.gai5);
+        itemmenu.put("giatien", "10:22");
+        itemmenu.put("diachi", "Giá phòng bao nhiêu?");
+        dsmenu.add(itemmenu);
+
+        itemmenu= new HashMap<String, Object>();
+        itemmenu.put("ten", "Phong Nhi");
+        itemmenu.put("hinh", R.drawable.hinh1);
+        itemmenu.put("giatien", "15:18");
+        itemmenu.put("diachi", "Còn phòng không bạn?");
+        dsmenu.add(itemmenu);
+
+        itemmenu= new HashMap<String, Object>();
+        itemmenu.put("ten", "Nguyễn Văn Hoàng");
+        itemmenu.put("hinh", R.drawable.trai1);
+        itemmenu.put("giatien", "08:55");
+        itemmenu.put("diachi", "Phòng mấy người vậy?");
+        dsmenu.add(itemmenu);
+
+
+        String[]from = {"ten", "hinh", "giatien", "diachi"};
+        int[]to ={R.id.tenmenu, R.id.hinhmenu, R.id.giatien, R.id.diachi};
+        SimpleAdapter myadapter = new SimpleAdapter(getContext(), dsmenu, R.layout.item_chat, from, to);
+        rcv.setAdapter(myadapter);
+
+        return view;
     }
 }

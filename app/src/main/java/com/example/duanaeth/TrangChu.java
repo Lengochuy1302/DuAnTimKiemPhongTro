@@ -65,8 +65,8 @@ public class TrangChu extends AppCompatActivity implements NavigationView.OnNavi
         //anh xạ
         anhxa();
 
-        //ẩn toolBar
-        getSupportActionBar().hide();
+//        //ẩn toolBar
+//        getSupportActionBar().hide();
 
         toggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close);
         drawerLayout.addDrawerListener(toggle);

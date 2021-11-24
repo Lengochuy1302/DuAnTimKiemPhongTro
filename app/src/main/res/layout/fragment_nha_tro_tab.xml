@@ -19,7 +19,7 @@
                 android:id="@+id/rcv_LoaiChi"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:paddingTop="10dp" />
+                android:paddingTop="0dp" />
 
             <com.github.clans.fab.FloatingActionMenu
                 android:id="@+id/material_design_android_floating_action_menu"

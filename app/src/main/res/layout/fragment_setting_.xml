@@ -7,20 +7,334 @@
     tools:context=".FragmentLayout.Setting.Setting_Fragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:background="#C49CDD"
-        android:layout_height="match_parent">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Đây là setting"
-            android:textSize="30dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:layout_editor_absoluteX="113dp" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+
+      <androidx.constraintlayout.widget.ConstraintLayout
+          android:layout_width="match_parent"
+          android:layout_height="match_parent">
+
+          <LinearLayout
+              android:id="@+id/linearLayout2"
+              android:layout_width="match_parent"
+              android:layout_height="160dp"
+              android:background="@color/teal_700"
+              android:orientation="vertical"
+              android:paddingTop="10dp"
+              app:layout_constraintEnd_toEndOf="parent"
+              app:layout_constraintStart_toStartOf="parent"
+              app:layout_constraintTop_toTopOf="parent">
+
+              <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                  android:id="@+id/avatar"
+                  android:layout_width="85dp"
+                  android:layout_height="85dp"
+                  android:layout_gravity="center_horizontal"
+                  android:layout_marginTop="5dp"
+                  android:src="@drawable/iconavata"
+                  app:civ_border_color="@color/greentext"
+                  app:civ_border_width="2dp" />
+
+              <TextView
+                  android:id="@+id/tennguoidung"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_gravity="center_horizontal"
+                  android:layout_marginTop="5dp"
+
+                  android:text="AETH HOUSE"
+                  android:textColor="#FFFFFF"
+                  android:textSize="14dp"
+                  android:textStyle="bold" />
+
+              <TextView
+                  android:id="@+id/gmailnguoidung"
+                  android:layout_width="390dp"
+                  android:layout_height="wrap_content"
+                  android:layout_gravity="center_horizontal"
+                  android:gravity="center"
+                  android:text="aethhouse@fpt.edu.vn"
+                  android:textColor="#FFFFFF"
+                  android:textSize="12dp"
+                  android:textStyle="italic" />
+
+          </LinearLayout>
+
+          <ScrollView
+              app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+              android:layout_width="match_parent"
+              android:layout_marginTop="4dp"
+              android:layout_height="wrap_content">
+              <androidx.constraintlayout.widget.ConstraintLayout
+                  android:layout_width="match_parent"
+                  android:layout_height="0dp"
+                  android:layout_marginStart="24dp"
+                  android:layout_marginTop="16dp"
+                  android:layout_marginEnd="24dp"
+                  android:layout_marginBottom="8dp"
+                  app:layout_constraintBottom_toBottomOf="parent"
+                  app:layout_constraintEnd_toEndOf="parent"
+                  app:layout_constraintStart_toStartOf="parent"
+                  app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+
+                  <TextView
+                      android:id="@+id/textView10"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:text="Người dùng:"
+                      android:textColor="@color/teal_700"
+                      android:textSize="20dp"
+                      android:textStyle="bold"
+                      app:layout_constraintStart_toStartOf="parent"
+                      app:layout_constraintTop_toTopOf="parent" />
+
+                  <View
+                      android:id="@+id/view55"
+                      android:layout_width="0dp"
+                      android:layout_height="1dp"
+                      android:layout_marginStart="24dp"
+                      android:layout_marginTop="16dp"
+                      android:layout_marginEnd="24dp"
+                      android:background="@color/inactive"
+                      app:layout_constraintEnd_toEndOf="parent"
+                      app:layout_constraintStart_toStartOf="parent"
+                      app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
+                  <TextView
+                      android:id="@+id/textView11"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_marginStart="24dp"
+                      android:layout_marginTop="10dp"
+                      android:text="Thông tin người dùng"
+                      android:textSize="16dp"
+                      app:layout_constraintStart_toStartOf="parent"
+                      app:layout_constraintTop_toBottomOf="@+id/view55" />
+
+                  <View
+                      android:id="@+id/view"
+                      android:layout_width="0dp"
+                      android:layout_height="1dp"
+                      android:layout_marginStart="24dp"
+                      android:layout_marginTop="10dp"
+                      android:layout_marginEnd="24dp"
+                      android:background="@color/inactive"
+                      app:layout_constraintEnd_toEndOf="parent"
+                      app:layout_constraintStart_toStartOf="parent"
+                      app:layout_constraintTop_toBottomOf="@+id/textView11" />
+
+                  <TextView
+                      android:id="@+id/textView12"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_marginStart="24dp"
+                      android:layout_marginTop="10dp"
+                      android:text="Bài đăng phòng trọ"
+                      android:textSize="16dp"
+                      app:layout_constraintStart_toStartOf="parent"
+                      app:layout_constraintTop_toBottomOf="@+id/view" />
+
+                  <View
+                      android:id="@+id/view2"
+                      android:layout_width="0dp"
+                      android:layout_height="1dp"
+                      android:layout_marginStart="24dp"
+                      android:layout_marginTop="10dp"
+                      android:layout_marginEnd="24dp"
+                      android:background="@color/inactive"
+                      app:layout_constraintEnd_toEndOf="parent"
+                      app:layout_constraintStart_toStartOf="parent"
+                      app:layout_constraintTop_toBottomOf="@+id/textView12" />
+
+
+                  <TextView
+                      android:id="@+id/textView2"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_marginStart="24dp"
+                      android:layout_marginTop="10dp"
+                      android:text="Bài đăng ở ghép"
+                      android:textSize="16dp"
+                      app:layout_constraintStart_toStartOf="parent"
+                      app:layout_constraintTop_toBottomOf="@+id/view2" />
+
+                  <View
+                      android:id="@+id/view3"
+                      android:layout_width="0dp"
+                      android:layout_height="1dp"
+                      android:layout_marginStart="24dp"
+                      android:layout_marginTop="10dp"
+                      android:layout_marginEnd="24dp"
+                      android:background="@color/inactive"
+                      app:layout_constraintEnd_toEndOf="parent"
+                      app:layout_constraintStart_toStartOf="parent"
+                      app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+                  <TextView
+                      android:id="@+id/textView5"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_marginStart="24dp"
+                      android:layout_marginTop="10dp"
+                      android:text="Phòng trọ ưa thích"
+                      android:textSize="16dp"
+                      app:layout_constraintStart_toStartOf="parent"
+                      app:layout_constraintTop_toBottomOf="@+id/view3" />
+
+                  <View
+                      android:id="@+id/view4"
+                      android:layout_width="0dp"
+                      android:layout_height="1dp"
+                      android:layout_marginStart="24dp"
+                      android:layout_marginTop="10dp"
+                      android:layout_marginEnd="24dp"
+                      android:background="@color/inactive"
+                      app:layout_constraintEnd_toEndOf="parent"
+                      app:layout_constraintStart_toStartOf="parent"
+                      app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+                  <TextView
+                      android:id="@+id/textView6"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_marginStart="24dp"
+                      android:layout_marginTop="10dp"
+                      android:text="Đổi mật khẩu"
+                      android:textSize="16dp"
+                      app:layout_constraintStart_toStartOf="parent"
+                      app:layout_constraintTop_toBottomOf="@+id/view4" />
+
+                  <View
+                      android:id="@+id/view5"
+                      android:layout_width="0dp"
+                      android:layout_height="1dp"
+                      android:layout_marginStart="24dp"
+                      android:layout_marginTop="10dp"
+                      android:layout_marginEnd="24dp"
+                      android:background="@color/inactive"
+                      app:layout_constraintEnd_toEndOf="parent"
+                      app:layout_constraintStart_toStartOf="parent"
+                      app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+                  <TextView
+                      android:id="@+id/textView0"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_marginTop="24dp"
+                      android:text="Hỗ trợ:"
+                      android:textColor="@color/teal_700"
+                      android:textSize="20dp"
+                      android:textStyle="bold"
+                      app:layout_constraintStart_toStartOf="parent"
+                      app:layout_constraintTop_toBottomOf="@+id/view5" />
+
+                  <View
+                      android:id="@+id/view55d"
+                      android:layout_width="0dp"
+                      android:layout_height="1dp"
+                      android:layout_marginStart="24dp"
+                      android:layout_marginTop="16dp"
+                      android:layout_marginEnd="24dp"
+                      android:background="@color/inactive"
+                      app:layout_constraintEnd_toEndOf="parent"
+                      app:layout_constraintStart_toStartOf="parent"
+                      app:layout_constraintTop_toBottomOf="@+id/textView0" />
+
+                  <TextView
+                      android:id="@+id/textView11d"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_marginStart="24dp"
+                      android:layout_marginTop="10dp"
+                      android:text="Đóng góp ý kiến"
+                      android:textSize="16dp"
+                      app:layout_constraintStart_toStartOf="parent"
+                      app:layout_constraintTop_toBottomOf="@+id/view55d" />
+
+                  <View
+                      android:id="@+id/viewf"
+                      android:layout_width="0dp"
+                      android:layout_height="1dp"
+                      android:layout_marginStart="24dp"
+                      android:layout_marginTop="10dp"
+                      android:layout_marginEnd="24dp"
+                      android:background="@color/inactive"
+                      app:layout_constraintEnd_toEndOf="parent"
+                      app:layout_constraintStart_toStartOf="parent"
+                      app:layout_constraintTop_toBottomOf="@+id/textView11d" />
+
+                  <TextView
+                      android:id="@+id/textView12f"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_marginStart="24dp"
+                      android:layout_marginTop="10dp"
+                      android:text="Cập nhật phiên bản"
+                      android:textSize="16dp"
+                      app:layout_constraintStart_toStartOf="parent"
+                      app:layout_constraintTop_toBottomOf="@+id/viewf" />
+
+                  <View
+                      android:id="@+id/view2d"
+                      android:layout_width="0dp"
+                      android:layout_height="1dp"
+                      android:layout_marginStart="24dp"
+                      android:layout_marginTop="10dp"
+                      android:layout_marginEnd="24dp"
+                      android:background="@color/inactive"
+                      app:layout_constraintEnd_toEndOf="parent"
+                      app:layout_constraintStart_toStartOf="parent"
+                      app:layout_constraintTop_toBottomOf="@+id/textView12f" />
+
+
+                  <TextView
+                      android:id="@+id/textView2d"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_marginStart="24dp"
+                      android:layout_marginTop="10dp"
+                      android:text="Lấy lại mật khẩu"
+                      android:textSize="16dp"
+                      app:layout_constraintStart_toStartOf="parent"
+                      app:layout_constraintTop_toBottomOf="@+id/view2d" />
+
+                  <View
+                      android:id="@+id/view3d"
+                      android:layout_width="0dp"
+                      android:layout_height="1dp"
+                      android:layout_marginStart="24dp"
+                      android:layout_marginTop="10dp"
+                      android:layout_marginEnd="24dp"
+                      android:background="@color/inactive"
+                      app:layout_constraintEnd_toEndOf="parent"
+                      app:layout_constraintStart_toStartOf="parent"
+                      app:layout_constraintTop_toBottomOf="@+id/textView2d" />
+
+                  <TextView
+                      android:id="@+id/textView2ds"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_marginStart="24dp"
+                      android:layout_marginTop="10dp"
+                      android:text="Đăng xuất"
+                      android:textSize="16dp"
+                      app:layout_constraintStart_toStartOf="parent"
+                      app:layout_constraintTop_toBottomOf="@+id/view3d" />
+
+                  <View
+                      android:id="@+id/view3ds"
+                      android:layout_width="0dp"
+                      android:layout_height="1dp"
+                      android:layout_marginStart="24dp"
+                      android:layout_marginTop="10dp"
+                      android:layout_marginEnd="24dp"
+                      android:background="@color/inactive"
+                      app:layout_constraintEnd_toEndOf="parent"
+                      app:layout_constraintStart_toStartOf="parent"
+                      app:layout_constraintTop_toBottomOf="@+id/textView2ds" />
+              </androidx.constraintlayout.widget.ConstraintLayout>
+          </ScrollView>
+
+
+      </androidx.constraintlayout.widget.ConstraintLayout>
+
 </FrameLayout>
