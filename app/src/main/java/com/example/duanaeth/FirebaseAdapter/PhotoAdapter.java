@@ -1,4 +1,4 @@
-package com.example.duanaeth.ArrayAdapter;
+package com.example.duanaeth.FirebaseAdapter;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -9,12 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.duanaeth.LayoutChucNang.ThemNhaTro;
 import com.example.duanaeth.R;
 
 import java.io.IOException;

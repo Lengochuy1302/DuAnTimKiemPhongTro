@@ -143,7 +143,7 @@
                 app:startIconDrawable="@drawable/ic_baseline_home_24">
 
                 <EditText
-                    android:id="@+id/emailDN"
+                    android:id="@+id/edtTenPhong"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -176,7 +176,7 @@
                     app:suffixText="Người">
 
                     <EditText
-                        android:id="@+id/songuoi"
+                        android:id="@+id/edtSoNguoi"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="number" />
@@ -197,7 +197,7 @@
 
                     <EditText
                         android:inputType="number"
-                        android:id="@+id/dientich"
+                        android:id="@+id/edtDienTich"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -220,7 +220,7 @@
                 app:startIconDrawable="@drawable/ic_baseline_domain_24">
 
                 <AutoCompleteTextView
-                    android:id="@+id/loaiphong"
+                    android:id="@+id/edtLoaiPhong"
                     android:layout_width="match_parent"
                     android:layout_height="53dp"
                     android:inputType="none" />
@@ -255,6 +255,7 @@
                 app:suffixText="VND/tháng">
 
                 <EditText
+                    android:id="@+id/edtGiaPhong"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="number" />
@@ -284,11 +285,11 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="1.0"
-                    app:startIconDrawable="@drawable/ic_baseline_monetization_on_24"
+                    app:startIconDrawable="@drawable/ic_baseline_flash_on_24"
                     app:suffixText="VND">
 
                     <EditText
-
+                        android:id="@+id/edtTienDien"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="number" />
@@ -304,10 +305,11 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/textInputLayout7"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:startIconDrawable="@drawable/ic_baseline_monetization_on_24"
+                    app:startIconDrawable="@drawable/ic_baseline_opacity_24"
                     app:suffixText="VND">
 
                     <EditText
+                        android:id="@+id/edtTienNuoc"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="number" />
@@ -329,7 +331,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputLayout9"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -342,15 +344,16 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView8"
                 app:startIconDrawable="@drawable/ic_baseline_map_24">
 
-                <EditText
+                <AutoCompleteTextView
+                    android:id="@+id/edtTinhThanh"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="text" />
+                    android:inputType="none" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputLayout10"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -363,15 +366,16 @@
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayout9"
                 app:startIconDrawable="@drawable/ic_baseline_location_on_24">
 
-                <EditText
+                <AutoCompleteTextView
+                    android:id="@+id/edtQuanHuyen"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="text" />
+                    android:inputType="none" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputLayout11"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -384,10 +388,11 @@
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayout10"
                 app:startIconDrawable="@drawable/ic_baseline_my_location_24">
 
-                <EditText
+                <AutoCompleteTextView
+                    android:id="@+id/edtPhuongXa"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="text" />
+                    android:inputType="none" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -406,6 +411,7 @@
                 app:startIconDrawable="@drawable/ic_baseline_museum_24">
 
                 <EditText
+                    android:id="@+id/edtTenDuong"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text" />
@@ -462,6 +468,7 @@
                             android:textOn="🌐 Internet" />
 
                         <ToggleButton
+                            android:id="@+id/btgMayLanh"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@drawable/toggle"
@@ -473,6 +480,7 @@
                             android:textOn="❄ Máy lạnh" />
 
                         <ToggleButton
+                            android:id="@+id/btgMayNuocNong"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@drawable/toggle"
@@ -484,6 +492,7 @@
                             android:textOn="🔥 Máy nuóc nóng" />
 
                         <ToggleButton
+                            android:id="@+id/btgTivi"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@drawable/toggle"
@@ -495,6 +504,7 @@
                             android:textOn="📺 Tivi" />
 
                         <ToggleButton
+                            android:id="@+id/btgNhaBep"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@drawable/toggle"
@@ -506,6 +516,7 @@
                             android:textOn="🍲 Nhà Bếp" />
 
                         <ToggleButton
+                            android:id="@+id/btgThuCung"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@drawable/toggle"
@@ -523,6 +534,7 @@
                         android:layout_weight="1"
                         android:layout_height="wrap_content">
                         <ToggleButton
+                            android:id="@+id/btgWc"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@drawable/toggle"
@@ -535,6 +547,7 @@
                             android:textOn="🚽 WC Riêng" />
 
                         <ToggleButton
+                            android:id="@+id/btgAnNinh"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@drawable/toggle"
@@ -546,6 +559,7 @@
                             android:textOn="👮 An ninh" />
 
                         <ToggleButton
+                            android:id="@+id/btgGac"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@drawable/toggle"
@@ -557,6 +571,7 @@
                             android:textOn="🏩 Gác lửng" />
 
                         <ToggleButton
+                            android:id="@+id/btgMayGiat"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@drawable/toggle"
@@ -568,6 +583,7 @@
                             android:textOn="👕 Máy giặt" />
 
                         <ToggleButton
+                            android:id="@+id/btgTuDo"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@drawable/toggle"
@@ -579,6 +595,7 @@
                             android:textOn="🗄 tủ đồ" />
 
                         <ToggleButton
+                            android:id="@+id/btgTuLanh"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@drawable/toggle"
@@ -610,6 +627,28 @@
                 app:layout_constraintTop_toBottomOf="@+id/linne" />
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/de"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:hint="Tình trạng phòng"
+                app:boxStrokeColor="#7CD2A6"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView4"
+                app:startIconDrawable="@drawable/ic_baseline_verified_user_24">
+
+                <AutoCompleteTextView
+                    android:id="@+id/edtTinhTrangPhong"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/d"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
@@ -624,15 +663,17 @@
                 app:endIconMode="clear_text"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView4"
+                app:layout_constraintTop_toBottomOf="@+id/de"
                 app:startIconDrawable="@drawable/ic_baseline_edit_note_24">
 
                 <EditText
+                    android:id="@+id/edtNoiDung"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
+                android:id="@+id/btnNoi"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_marginEnd="8dp"
@@ -659,6 +700,7 @@
                 app:startIconDrawable="@drawable/ic_baseline_local_phone_24">
 
                 <EditText
+                    android:id="@+id/edtSdtNhaTro"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="phone" />
@@ -666,6 +708,7 @@
 
 
             <TextView
+                android:id="@+id/btnThemNhaTro"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginStart="16dp"
