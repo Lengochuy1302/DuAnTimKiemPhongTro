@@ -59,7 +59,7 @@ Ngày nay đời sống của người dân tăng cao, nhiều người rời kh
  | 10 | Thêm các fragment quan trọng |
  | 11 | Thêm chức năng map và viewpager |
  | 12 | Update thêm nhà trọ | 
- | 13 |
+ | 13 | Upload hết các chức năng thêm trọ ở ghép chat setting |
  | 14 |
  | 15 |
  | 16 |
