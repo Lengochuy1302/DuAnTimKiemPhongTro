@@ -28,10 +28,17 @@ import com.example.duanaeth.ArrayAdapter.TienIch;
 import com.example.duanaeth.FirebaseAdapter.PhotoAdapter;
 import com.example.duanaeth.R;
 import com.example.duanaeth.TrangChu;
+import com.example.duanaeth.UpdateProfile;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -63,6 +70,17 @@ public class ThemNhaTro extends AppCompatActivity {
     private static final int PICK_IMG = 1;
     private ArrayList<Uri> ImageList = new ArrayList<Uri>();
     private TienIch tienIch = new TienIch();
+    private TienIch tienIch1 = new TienIch();
+    private TienIch tienIch2 = new TienIch();
+    private TienIch tienIch3 = new TienIch();
+    private TienIch tienIch4 = new TienIch();
+    private TienIch tienIch5 = new TienIch();
+    private TienIch tienIch6 = new TienIch();
+    private TienIch tienIch7 = new TienIch();
+    private TienIch tienIch8 = new TienIch();
+    private TienIch tienIch9 = new TienIch();
+    private TienIch tienIch10 = new TienIch();
+    private TienIch tienIch11 = new TienIch();
     private List<TienIch> dsTienIch = new ArrayList<>();
     private int uploads = 0;
     private DatabaseReference databaseReference;
@@ -123,6 +141,32 @@ public class ThemNhaTro extends AppCompatActivity {
         //onclickToggleButton
         onclickToggleButton();
 
+        //set sdt
+        setSdt();
+
+
+    }
+
+    //hàm set sđt
+    public void setSdt() {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user == null) {
+            return;
+        }
+
+        reference = FirebaseDatabase.getInstance(linkRealTime).getReference("users").child(user.getUid()).child("Profile");
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String phoneFromDB = dataSnapshot.child("numberphone").getValue(String.class);
+                edtSdtNhaTro.setText(phoneFromDB);
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
 
     }
 
@@ -161,6 +205,7 @@ public class ThemNhaTro extends AppCompatActivity {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         tinhthanh = parent.getItemAtPosition(position).toString();
+
                         //quận huyện
                         if (tinhthanh.equals("Hà Nội")) {
                             arrayAdapter = new ArrayAdapter<String>(ThemNhaTro.this, android.R.layout.simple_list_item_1, arrquanhuyenhanoi);
@@ -350,6 +395,15 @@ public class ThemNhaTro extends AppCompatActivity {
         edtQuanHuyen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (tinhthanh.equals("")) {
+                    new SweetAlertDialog(ThemNhaTro.this, SweetAlertDialog.WARNING_TYPE)
+                            .setTitleText("Thông báo nhỏ!")
+                            .setContentText("Không thể chọn quận huyện khi chưa chọn tỉnh thành!")
+                            .setConfirmText("Đã hiểu!")
+                            .show();
+                    return;
+                }
+
                     edtPhuongXa.setText("");
                 //phường xã
                 if (quanhuyen.equals("Ba Đình")) {
@@ -502,6 +556,27 @@ public class ThemNhaTro extends AppCompatActivity {
                             phuongxa = parent.getItemAtPosition(position).toString();
                         }
                     });
+                }
+            }
+        });
+
+        edtPhuongXa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (tinhthanh.equals("")) {
+                    new SweetAlertDialog(ThemNhaTro.this, SweetAlertDialog.WARNING_TYPE)
+                            .setTitleText("Thông báo nhỏ!")
+                            .setContentText("Không thể chọn phường xã khi chưa chọn tỉnh thành và quận huyện!")
+                            .setConfirmText("Đã hiểu!")
+                            .show();
+                    return;
+                } else    if (quanhuyen.equals("")) {
+                    new SweetAlertDialog(ThemNhaTro.this, SweetAlertDialog.WARNING_TYPE)
+                            .setTitleText("Thông báo nhỏ!")
+                            .setContentText("Không thể chọn phường xã khi chưa chọn quận huyện!")
+                            .setConfirmText("Đã hiểu!")
+                            .show();
+                    return;
                 }
             }
         });
@@ -681,6 +756,11 @@ public class ThemNhaTro extends AppCompatActivity {
     //hàm thêm nhà trọ
     public void setThemNhaTro() {
 
+
+        Boolean checkError = true;
+
+
+
     }
 
     //hàm event Toggle Buttons
@@ -689,19 +769,13 @@ public class ThemNhaTro extends AppCompatActivity {
         btginternet.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
-                    tienIch = new TienIch();
                     tienIch.setId(""+ dsTienIch.size());
                     tienIch.setTen("Internet");
                     dsTienIch.add(tienIch);
-                    Log.d("aaaa", "trước khi xóa: "+ dsTienIch);
-                    Toast.makeText(ThemNhaTro.this, "Đã bật"+ tienIch.getTen(),Toast.LENGTH_SHORT).show();
                 } else {
-                    for (int i = 0 ; i < dsTienIch.size(); i++) {
+                    for (int i = 0; i <= dsTienIch.size(); i++){
                         if (tienIch.getTen().equals("Internet")) {
-                            tienIch.getTen();
-//                            dsTienIch.remove(i);
-                            Log.d("aaaa", "sau khi xóa: "+ dsTienIch);
-                            Toast.makeText(ThemNhaTro.this, "Đã tắt"+ tienIch.getTen(),Toast.LENGTH_SHORT).show();
+                            dsTienIch.remove(i);
                             return;
                         }
                     }
@@ -713,19 +787,13 @@ public class ThemNhaTro extends AppCompatActivity {
         btgWc.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
-                    tienIch = new TienIch();
-                    tienIch.setId(""+ dsTienIch.size());
-                    tienIch.setTen("WC Riêng");
-                    dsTienIch.add(tienIch);
-                    Log.d("aaaa", "trước khi xóa: "+ dsTienIch);
-                    Toast.makeText(ThemNhaTro.this, "Đã bật"+ tienIch.getTen(),Toast.LENGTH_SHORT).show();
+                    tienIch1.setId(""+ dsTienIch.size());
+                    tienIch1.setTen("WC Riêng");
+                    dsTienIch.add(tienIch1);
                 } else {
-                    for (int i = 0 ; i < dsTienIch.size(); i++) {
-                        if (tienIch.getTen().equals("WC Riêng")) {
-                            tienIch.getTen();
-//                            dsTienIch.remove(i);
-                            Log.d("aaaa", "sau khi xóa: "+ dsTienIch);
-                            Toast.makeText(ThemNhaTro.this, "Đã tắt"+ tienIch.getTen(),Toast.LENGTH_SHORT).show();
+                    for (int i = 0; i <= dsTienIch.size(); i++){
+                        if (tienIch1.getTen().equals("WC Riêng")) {
+                            dsTienIch.remove(i);
                             return;
                         }
                     }
@@ -737,19 +805,13 @@ public class ThemNhaTro extends AppCompatActivity {
         btgMayLanh.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
-                    tienIch = new TienIch();
-                    tienIch.setId(""+ dsTienIch.size());
-                    tienIch.setTen("Máy Lạnh");
-                    dsTienIch.add(tienIch);
-                    Log.d("aaaa", "trước khi xóa: "+ dsTienIch);
-                    Toast.makeText(ThemNhaTro.this, "Đã bật"+ tienIch.getTen(),Toast.LENGTH_SHORT).show();
+                    tienIch2.setId(""+ dsTienIch.size());
+                    tienIch2.setTen("Máy Lạnh");
+                    dsTienIch.add(tienIch2);
                 } else {
-                    for (int i = 0 ; i < dsTienIch.size(); i++) {
-                        if (tienIch.getTen().equals("Máy Lạnh")) {
-                            tienIch.getTen();
-//                            dsTienIch.remove(i);
-                            Log.d("aaaa", "sau khi xóa: "+ dsTienIch);
-                            Toast.makeText(ThemNhaTro.this, "Đã tắt"+ tienIch.getTen(),Toast.LENGTH_SHORT).show();
+                    for (int i = 0; i <= dsTienIch.size(); i++){
+                        if (tienIch2.getTen().equals("Máy Lạnh")) {
+                            dsTienIch.remove(i);
                             return;
                         }
                     }
@@ -761,19 +823,159 @@ public class ThemNhaTro extends AppCompatActivity {
         btgAnNinh.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
-                    tienIch = new TienIch();
-                    tienIch.setId(""+ dsTienIch.size());
-                    tienIch.setTen("An Ninh");
-                    dsTienIch.add(tienIch);
-                    Log.d("aaaa", "trước khi xóa: "+ dsTienIch);
-                    Toast.makeText(ThemNhaTro.this, "Đã bật"+ tienIch.getTen(),Toast.LENGTH_SHORT).show();
+                    tienIch3.setId(""+ dsTienIch.size());
+                    tienIch3.setTen("An Ninh");
+                    dsTienIch.add(tienIch3);
                 } else {
-                    for (int i = 0 ; i < dsTienIch.size(); i++) {
-                        if (tienIch.getTen().equals("An Ninh")) {
-                            tienIch.getTen();
-//                            dsTienIch.remove(i);
-                            Log.d("aaaa", "sau khi xóa: "+ dsTienIch);
-                            Toast.makeText(ThemNhaTro.this, "Đã tắt"+ tienIch.getTen(),Toast.LENGTH_SHORT).show();
+                    for (int i = 0; i <= dsTienIch.size(); i++){
+                        if (tienIch3.getTen().equals("An Ninh")) {
+                            dsTienIch.remove(i);
+                            return;
+                        }
+                    }
+                }
+            }
+        });
+
+        //máy nước nóng
+        btgMayNuocNong.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    tienIch4.setId(""+ dsTienIch.size());
+                    tienIch4.setTen("Máy Nước Nóng");
+                    dsTienIch.add(tienIch4);
+                } else {
+                    for (int i = 0; i <= dsTienIch.size(); i++){
+                        if (tienIch4.getTen().equals("Máy Nước Nóng")) {
+                            dsTienIch.remove(i);
+                            return;
+                        }
+                    }
+                }
+            }
+        });
+
+        //gác
+        btgGac.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    tienIch5.setId(""+ dsTienIch.size());
+                    tienIch5.setTen("Gác Lửng");
+                    dsTienIch.add(tienIch5);
+                } else {
+                    for (int i = 0; i <= dsTienIch.size(); i++){
+                        if (tienIch5.getTen().equals("Gác Lửng")) {
+                            dsTienIch.remove(i);
+                            return;
+                        }
+                    }
+                }
+            }
+        });
+
+        //tivi
+        btgTivi.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    tienIch6.setId(""+ dsTienIch.size());
+                    tienIch6.setTen("Tivi");
+                    dsTienIch.add(tienIch6);
+                } else {
+                    for (int i = 0; i <= dsTienIch.size(); i++){
+                        if (tienIch6.getTen().equals("Tivi")) {
+                            dsTienIch.remove(i);
+                            return;
+                        }
+                    }
+                }
+            }
+        });
+
+        //máy giặt
+        btgMayGiat.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    tienIch7.setId(""+ dsTienIch.size());
+                    tienIch7.setTen("Máy Giặt");
+                    dsTienIch.add(tienIch7);
+                } else {
+                    for (int i = 0; i <= dsTienIch.size(); i++){
+                        if (tienIch7.getTen().equals("Máy Giặt")) {
+                            dsTienIch.remove(i);
+                            return;
+                        }
+                    }
+                }
+            }
+        });
+
+        //nhà bếp
+        btgNhaBep.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    tienIch8.setId(""+ dsTienIch.size());
+                    tienIch8.setTen("Nhà Bếp");
+                    dsTienIch.add(tienIch8);
+                } else {
+                    for (int i = 0; i <= dsTienIch.size(); i++){
+                        if (tienIch8.getTen().equals("Nhà Bếp")) {
+                            dsTienIch.remove(i);
+                            return;
+                        }
+                    }
+                }
+            }
+        });
+
+
+        //tủ đồ
+        btgTuDo.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    tienIch9.setId(""+ dsTienIch.size());
+                    tienIch9.setTen("Tủ Đồ");
+                    dsTienIch.add(tienIch9);
+                } else {
+                    for (int i = 0; i <= dsTienIch.size(); i++){
+                        if (tienIch9.getTen().equals("Tủ Đồ")) {
+                            dsTienIch.remove(i);
+                            return;
+                        }
+                    }
+                }
+            }
+        });
+
+
+        //thú cưng
+        btgThuCung.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    tienIch10.setId(""+ dsTienIch.size());
+                    tienIch10.setTen("Thú Cưng");
+                    dsTienIch.add(tienIch10);
+                } else {
+                    for (int i = 0; i <= dsTienIch.size(); i++){
+                        if (tienIch10.getTen().equals("Thú Cưng")) {
+                            dsTienIch.remove(i);
+                            return;
+                        }
+                    }
+                }
+            }
+        });
+
+        //tủ lạnh
+        btgTuLanh.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    tienIch11.setId(""+ dsTienIch.size());
+                    tienIch11.setTen("Tủ Lạnh");
+                    dsTienIch.add(tienIch11);
+                } else {
+                    for (int i = 0; i <= dsTienIch.size(); i++){
+                        if (tienIch11.getTen().equals("Tủ Lạnh")) {
+                            dsTienIch.remove(i);
                             return;
                         }
                     }
