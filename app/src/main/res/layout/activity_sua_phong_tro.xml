@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LayoutChucNang.ThemNhaTro">
+    tools:context=".LayoutChucNang.SuaPhongTro">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
@@ -18,7 +18,7 @@
             android:id="@+id/textView5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="THÊM PHÒNG TRỌ"
+            android:text="SỬA PHÒNG TRỌ"
             android:textColor="@color/teal_700"
             android:textSize="20dp"
             android:textStyle="bold"
@@ -107,7 +107,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
 
-          />
+                    />
             </LinearLayout>
 
 

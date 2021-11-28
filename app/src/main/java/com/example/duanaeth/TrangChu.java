@@ -24,6 +24,7 @@ import android.widget.Toast;
 
 import com.example.duanaeth.ArrayAdapter.Device;
 import com.example.duanaeth.FragmentLayout.NhaTro.NhaTro_Fragment;
+import com.example.duanaeth.FragmentLayout.NhaTro.PhongTroCuaToi;
 import com.example.duanaeth.FragmentLayout.NhanTin.NhanTin_Fragment;
 import com.example.duanaeth.FragmentLayout.PhongGhep.PhongGhep_Fragment;
 import com.example.duanaeth.FragmentLayout.Setting.Setting_Fragment;
@@ -286,9 +287,13 @@ public class TrangChu extends AppCompatActivity implements NavigationView.OnNavi
             }
         }
         else if (id == R.id.intro) {
-            setTitle("GIỚI THIỆU");
-            Intent introIntent = new Intent(TrangChu.this, thongTinApp.class);
-            startActivity(introIntent);
+            if (FRAGMENT_GIOITHIEU != currenFragment) {
+                setTitle("PHÒNG TRỌ ĐÃ ĐĂNG");
+                replaceFragment(new PhongTroCuaToi());
+                bottomNavigationView.getMenu().findItem(R.id.btnthongke).setChecked(false);
+                currenFragment = FRAGMENT_GIOITHIEU;
+
+            }
         }
         else if (id == R.id.capnhat) {
             if (FRAGMENT_THONGTIN != currenFragment) {
@@ -301,13 +306,9 @@ public class TrangChu extends AppCompatActivity implements NavigationView.OnNavi
         }
 
         else if (id == R.id.thongtin) {
-//            if (FRAGMENT_GIOITHIEU != currenFragment) {
-//                setTitle("THÔNG TIN PHẦN MỀM");
-//                gioithieu_fragment gioithieu_fragment = new gioithieu_fragment();
-//                navigationView.setCheckedItem(R.id.thongtin);
-//                replaceFragment(gioithieu_fragment);
-//                currenFragment = FRAGMENT_GIOITHIEU;
-//            }
+            setTitle("GIỚI THIỆU");
+            Intent introIntent = new Intent(TrangChu.this, thongTinApp.class);
+            startActivity(introIntent);
         }
 
         else if (id == R.id.phienban) {

@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.duanaeth.FragmentLayout.NhaTro.PhongTroCuaToi;
 import com.example.duanaeth.R;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -20,7 +21,7 @@ import com.squareup.picasso.Picasso;
 public class Setting_Fragment extends Fragment {
     View view;
     ImageView avatar;
-    TextView tennguoidung, gmailtext;
+    TextView tennguoidung, gmailtext, baidang;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +36,19 @@ public class Setting_Fragment extends Fragment {
          gmailtext = (TextView) view.findViewById(R.id.gmailnguoidung);
          tennguoidung = (TextView) view.findViewById(R.id.tennguoidung);
          avatar = (ImageView) view.findViewById(R.id.avatar);
+        baidang = (TextView) view.findViewById(R.id.baidang);
+
+
+        //event
+        baidang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+            }
+        });
+
+
         setprofile();
         return view;
     }

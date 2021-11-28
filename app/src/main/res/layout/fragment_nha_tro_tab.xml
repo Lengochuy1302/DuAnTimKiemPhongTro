@@ -15,53 +15,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <GridView
-                android:id="@+id/rcv_LoaiChi"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rcv_NhaTro"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:paddingTop="0dp" />
-
-            <com.github.clans.fab.FloatingActionMenu
-                android:id="@+id/material_design_android_floating_action_menu"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentBottom="true"
-                android:layout_marginLeft="11dp"
-                fab:menu_animationDelayPerItem="55"
-                fab:menu_backgroundColor="@android:color/transparent"
-                fab:menu_buttonSpacing="0dp"
-                fab:menu_colorNormal="@color/teal_700"
-                fab:menu_colorPressed="#ABD2D8"
-                fab:menu_colorRipple="#99FFFFFF"
-                fab:menu_fab_label="Thoát"
-                fab:menu_fab_size="normal"
-                fab:menu_icon="@drawable/fab_add"
-                fab:menu_labels_colorNormal="@color/teal_700"
-                fab:menu_labels_cornerRadius="3dp"
-                fab:menu_labels_ellipsize="none"
-                fab:menu_labels_hideAnimation="@anim/fab_slide_out_to_right"
-                fab:menu_labels_margin="0dp"
-                fab:menu_labels_maxLines="-1"
-                fab:menu_labels_padding="8dp"
-                fab:menu_labels_position="left"
-                fab:menu_labels_showAnimation="@anim/fab_slide_in_from_right"
-                fab:menu_labels_showShadow="true"
-                fab:menu_labels_singleLine="false"
-                fab:menu_labels_textSize="14sp"
-                fab:menu_openDirection="up"
-
-                >
-
-                <com.github.clans.fab.FloatingActionButton
-                    android:id="@+id/addBtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/fab_add"
-                    app:fab_colorNormal="#FF9800"
-                    fab:fab_label="Thêm nhà trọ"
-                    fab:fab_size="mini" />
-            </com.github.clans.fab.FloatingActionMenu>
 
         </RelativeLayout>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>

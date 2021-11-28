@@ -48,7 +48,7 @@
                 />
             <item
                 android:id="@+id/intro"
-                android:title="Giới thiệu phần mềm"
+                android:title="Bài đăng của tôi"
 
                 />
 
