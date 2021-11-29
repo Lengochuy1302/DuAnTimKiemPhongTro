@@ -32,6 +32,8 @@ android {
 }
 
 dependencies {
+    compile 'com.github.clans:fab:1.6.4'
+
     implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.22'
     implementation 'io.github.ParkSangGwon:tedpermission:2.3.0'
     implementation 'com.airbnb.android:lottie:4.1.0'
