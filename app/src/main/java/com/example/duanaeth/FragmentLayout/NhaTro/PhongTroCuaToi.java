@@ -12,15 +12,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.GridView;
-import android.widget.SimpleAdapter;
 
 import com.example.duanaeth.ArrayAdapter.NhaTro;
 import com.example.duanaeth.FirebaseAdapter.NhaTroAdapter;
+import com.example.duanaeth.FirebaseAdapter.NhaTroCuaToiAdapter;
 import com.example.duanaeth.LayoutChucNang.ThemNhaTro;
 import com.example.duanaeth.R;
-import com.example.duanaeth.SplashScreen.IntroActivity;
-import com.example.duanaeth.TrangChu;
 import com.github.clans.fab.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -31,19 +28,16 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-public class Tab_NhaTro_Fragment extends Fragment {
+public class PhongTroCuaToi extends Fragment {
     View view;
+    FloatingActionButton btnThem;
     private RecyclerView rcv;
     private String linkdatabase;
     private DatabaseReference reference;
     private ArrayList<NhaTro> listNhaTro = new ArrayList<>();
-    private NhaTroAdapter nhaTroAdapter;
-
-
+    private NhaTroCuaToiAdapter nhaTroAdapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -55,25 +49,31 @@ public class Tab_NhaTro_Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        view =  inflater.inflate(R.layout.fragment_nha_tro_tab, container, false);
+        view = inflater.inflate(R.layout.fragment_phong_tro_cua_toi, container, false);
         // findViewById
         linkdatabase = getResources().getString(R.string.link_RealTime_Database);
+        btnThem = view.findViewById(R.id.addBtn);
         rcv = view.findViewById(R.id.rcv_NhaTro);
 
         //get data phong trọ
         getLisviewDatabasefirebase("");
 
 
-        nhaTroAdapter = new NhaTroAdapter();
-        nhaTroAdapter = new NhaTroAdapter(getActivity(), R.layout.itemsanpham, listNhaTro);
+        nhaTroAdapter = new NhaTroCuaToiAdapter();
+        nhaTroAdapter = new NhaTroCuaToiAdapter(getActivity(), R.layout.itemsanpham, listNhaTro);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         rcv.setLayoutManager(linearLayoutManager);
         listNhaTro = new ArrayList<>();
         nhaTroAdapter.setData(listNhaTro);
         rcv.setAdapter(nhaTroAdapter);
 
-
-
+        // event click
+        btnThem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(), ThemNhaTro.class));
+            }
+        });
         return view;
     }
 
@@ -82,7 +82,7 @@ public class Tab_NhaTro_Fragment extends Fragment {
         if (user == null) {
             return;
         }
-        reference = FirebaseDatabase.getInstance(linkdatabase).getReference("danhSachTro");
+        reference = FirebaseDatabase.getInstance(linkdatabase).getReference("users").child(user.getUid()).child("baiDangCuaToi");
         reference.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
